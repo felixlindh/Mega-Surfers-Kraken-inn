@@ -13,23 +13,74 @@
   <body>
     <section class="cart-container">
       <img class="paper" src="assets/Papper_TP.png" alt="" />
-      <h1 class="cart-header">Din varukorg</h1>
-      <div class="line"></div>
-      <div class="total-price-container">
-        <h2 class="total-price">Totalt pris (inkl.moms)</h2>
-        <p class="price">(Totalt pris)</p>
-      </div>
-      <article class="dish-article">
-        <h3 class="dish">Köttfärssås</h3>
-        <p class="price">100kr</p>
-      </article>
-      <article class="dish-article">
-        <h3 class="dish">Potatisgratäng</h3>
-        <p class="price">100kr</p>
-      </article>
+      <div class="test-container">
+        <div class="cart-header">
+          <h1 class="heading">Din varukorg</h1>
+
+          <h5 class="remove-all">Remove all</h5>
+        </div>
+        <div class="line"></div>
+        
+        <article class="cart-items">
+          <div class="img-box">
+            <img
+              class="item-img"
+              src="assets/photo-1600891964599-f61ba0e24092.jpg"
+              alt="" />
+          </div>
+          <div class="about">
+            <h1 class="title">Köttfärssås</h1>
+            <h3 class="subtitle">diverse info</h3>
+          </div>
+          <div class="counter">
+            <div class="counter-btn">+</div>
+            <div class="count">1</div>
+            <div class="counter-btn">-</div>
+          </div>
+          <div class="prices">
+            <div class="amount">100kr</div>
+            <div class="remove">Remove</div>
+          </div>
+        </article>
+
+        <article class="cart-items">
+          <div class="img-box">
+            <img
+              class="item-img"
+              src="assets/photo-1600891964599-f61ba0e24092.jpg"
+              alt="" />
+          </div>
+          <div class="about">
+            <h1 class="title">Potatisgratäng</h1>
+            <h3 class="subtitle">diverse info</h3>
+          </div>
+          <div class="counter">
+            <div class="counter-btn">+</div>
+            <div class="count">1</div>
+            <div class="counter-btn">-</div>
+          </div>
+          <div class="prices">
+            <div class="amount">150kr</div>
+            <div class="remove">Remove</div>
+          </div>
+        </article>
+        <hr />
+
+        <div class="checkout">
+            
+          <div class="total">
+            <div>
+              <div class="subtotal">Total kostnad:</div>
+              <div class="items">2 varor</div>
+            </div>
+            <div class="total-amount">250kr</div>
+        </div>
+       
       <div class="place-order">
-        <button class="order-btn">Beställ</button>
+        <button class="place-order-btn">Beställ</button>
       </div>
+      </div>
+     
     </section>
   </body>
 </html>
