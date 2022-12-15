@@ -16,6 +16,10 @@ body {
 }
 .card-container {
   margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 10em;
+  padding-bottom: 10em;
 }
 .card {
   display: flex;
@@ -24,6 +28,7 @@ body {
   justify-content: space-around;
   height: 25em;
 }
+
 
 .background-image {
   position: absolute;
@@ -42,14 +47,6 @@ body {
 }
 
 .food-info {
-  color: #087f8c;
-}
-
-.order-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1em;
   color: #087f8c;
 }
 
