@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-image: url("assets/wood-background.jpg");
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 25em;
+    margin-top: 2em;
+}
+
+.background-image {
+    position: absolute;
+    z-index: -1;
+    width: 90%;
+}
+
+.food-image {
+    height: 10em;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px black;
+    margin-top: 1em;
+}
+.food-name {
+    color: white;
+}
+
+.food-info {
+    color: white;
+}
+
+.order-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    color: white;
+}
+
+.order-button {
+    border-radius: 10px;
+    border-style: none;
+    background-color: rgb(201, 119, 25);
+    color: white;
+    padding: 0.5em 1em;
+    box-shadow: 1px 1px 10px black;
+}
