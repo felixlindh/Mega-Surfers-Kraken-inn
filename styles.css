@@ -1,63 +1,62 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
-    width: 100%;
-    background-image: url("assets/wood-background.jpg");
+  height: 100vh;
+  width: 100%;
+  background-image: url("assets/wood-background.jpg");
 }
 .card-container {
-    margin-top: 3em;
+  margin-top: 3em;
 }
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    height: 25em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 25em;
 }
 
 .background-image {
-    position: absolute;
-    z-index: -1;
-    width: 90%;
+  position: absolute;
+  z-index: -1;
+  width: 90%;
 }
 
 .food-image {
-    height: 10em;
-    width: 80%;
-    border-radius: 10px;
-    box-shadow: 1px 1px 10px black;
+  height: 10em;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px black;
 }
 .food-name {
-    color: #087F8C;
+  color: #087f8c;
 }
 
 .food-info {
-    color: #087F8C;
+  color: #087f8c;
 }
 
 .order-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1em;
-    color: #087F8C;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  color: #087f8c;
 }
 
 .order-button {
-    border-radius: 10px;
-    border-style: none;
-    background-color: #087F8C;
-    color: white;
-    font-weight: bold;
-    padding: 1em 2em;
-    box-shadow: 1px 1px 10px black;
+  border-radius: 10px;
+  border-style: none;
+  background-color: #087f8c;
+  color: white;
+  font-weight: bold;
+  padding: 1em 2em;
+  box-shadow: 1px 1px 10px black;
 }
-
 
 body {
   width: 100vw;
@@ -105,6 +104,40 @@ body {
 
 .cart-amount > .amount-text {
   color: white;
+}
+
+.header-lang-select {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.745);
+  width: 100vw;
+  padding: 100% 0;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-lang-select > .lang-select-background {
+  width: 100%;
+  position: absolute;
+  z-index: -5;
+}
+
+.header-lang-select > .lang-select-title {
+  color: var(--blue);
+}
+
+.lang-select-flags {
+  display: flex;
+  justify-content: space-around;
+}
+
+.lang-select-flags > .flag-img {
+  width: 33%;
+  box-shadow: 0 0 15px black;
 }
 
 /* nav bar  */
