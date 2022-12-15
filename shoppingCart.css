@@ -1,17 +1,19 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
-}
+} */
 
-body{
+/* body{
     background-image: url("assets/wood-591631_960_720.jpg") ;
-}
+} */
 
 .cart-container{
     display: flex;
     flex-wrap: wrap;
-    margin: 2em 3em;
-   
+    position: relative;
+    
+  
+    
 }
 
 .cart-header{
@@ -23,7 +25,7 @@ body{
 .total-price-container{
     margin-top: 1em;
     display: flex;
-
+    width: 100%;
     justify-content: space-between;
 }
 
@@ -33,6 +35,7 @@ body{
 
 .dish-article{
     margin-top: 1em;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     font-size: 1rem;
@@ -43,19 +46,20 @@ body{
     margin-left: 4.5em;
 }
 
-.place-order-btn{
-    margin-top: 1em;
-    width: 10em;
-    height: 3em;
-    border-radius: .3em;
-    
+.order-btn {
+    border-radius: 10px;
+    border-style: none;
+    background-color: #087F8C;
+    color: white;
+    font-weight: bold;
+    padding: 1em 2em;
+    box-shadow: 1px 1px 10px black;
 }
 
 .paper{
-    margin-left: 1em;
-  position: absolute;
+    position: absolute;
    z-index: -1;
    width: 90%;
-   height: 80%;
+    /* height: 80%; */
    
 }
