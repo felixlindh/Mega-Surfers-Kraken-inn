@@ -1,5 +1,5 @@
 :root {
-    --blue: #087F8C;
+  --blue: #087f8c;
 }
 * {
   padding: 0;
@@ -8,11 +8,11 @@
 }
 
 body {
-    height: 100vh;
-    width: 100%;
-    background-image: url("assets/wood-background.jpg");
-    font-family: 'Berkshire Swash', cursive;
-    color: var(--blue);
+  height: 100vh;
+  width: 100%;
+  background-image: url("assets/wood-background.jpg");
+  font-family: "Berkshire Swash", cursive;
+  color: var(--blue);
 }
 .card-container {
   margin-top: 3em;
@@ -38,7 +38,7 @@ body {
   box-shadow: 1px 1px 10px black;
 }
 .food-name {
-    color: var(--blue);
+  color: var(--blue);
 }
 
 .food-info {
@@ -54,14 +54,14 @@ body {
 }
 
 .order-button {
-    border-radius: 10px;
-    border-style: none;
-    background-color: #087F8C;
-    color: white;
-    font-weight: bold;
-    padding: 1em 2em;
-    box-shadow: 1px 1px 10px black;
-    font-family: 'Berkshire Swash', cursive;
+  border-radius: 10px;
+  border-style: none;
+  background-color: #087f8c;
+  color: white;
+  font-weight: bold;
+  padding: 1em 2em;
+  box-shadow: 1px 1px 10px black;
+  font-family: "Berkshire Swash", cursive;
 }
 
 /* Header classes */
@@ -78,11 +78,13 @@ body {
 }
 
 .header-top > .top-title {
-  flex: 0 0 45%;
+  flex: 0 0 25%;
+  text-align: center;
 }
 
 .header-top > .top-cart,
-.header-top > .top-flag {
+.header-top > .top-flag,
+.header-top > .top-search {
   flex: 0 0 20%;
   width: 20%;
 }
@@ -140,6 +142,64 @@ body {
 .lang-select-flags > .flag-img {
   width: 33%;
   box-shadow: 0 0 15px black;
+}
+
+.top-search-screen {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.745);
+  width: 100vw;
+  padding: 20vh 0 65vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 1.5em;
+}
+
+.top-search-screen > .search-screen-background {
+  width: 100%;
+  position: absolute;
+  top: 14vh;
+  z-index: -5;
+}
+
+.top-search-screen > .search-screen-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1em;
+}
+
+.search-screen-filters > .filters-options {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: center;
+}
+
+.filters-options > .filters-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.filters-options > span {
+  margin-left: 0.5em;
+}
+
+.search-screen-user-input > * {
+  font-family: "Berkshire Swash", cursive;
+  height: 2em;
+}
+
+.search-screen-user-input > .user-input-search-btn {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  width: 4em;
 }
 
 /* nav bar  */
