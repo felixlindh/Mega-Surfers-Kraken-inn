@@ -57,3 +57,81 @@ body {
     padding: 1em 2em;
     box-shadow: 1px 1px 10px black;
 }
+
+
+body {
+  width: 100vw;
+}
+
+/* Header classes */
+.page-header {
+  width: 100%;
+}
+
+.header-top {
+  width: 95%;
+  margin: 0.5em auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top > .top-title {
+  flex: 0 0 45%;
+}
+
+.header-top > .top-cart,
+.header-top > .top-flag {
+  flex: 0 0 20%;
+  width: 20%;
+}
+
+.top-cart {
+  position: relative;
+}
+
+.top-cart > .cart-img {
+  width: 100%;
+}
+
+.top-cart > .cart-amount {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background-image: radial-gradient(circle, black 33%, transparent);
+  padding: 25%;
+  border-radius: 50%;
+}
+
+.cart-amount > .amount-text {
+  color: white;
+}
+
+/* nav bar  */
+.header-nav {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.nav-list {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-list > .list-btn {
+  width: 18%;
+  background: none;
+  background-image: url("assets/images/icons/scroll.png");
+  background-size: 100% 100%;
+  border: none;
+  background-repeat: no-repeat;
+  /* background-position: 0 10px; */
+}
+
+.list-btn > .btn-img {
+  position: relative;
+  width: 100%;
+  margin: auto auto;
+}
