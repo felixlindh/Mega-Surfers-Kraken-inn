@@ -5,13 +5,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kraken inn</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-anchor.ico?">
     <script src="app.js" defer></script>
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="shoppingCart.css" />
   </head>
 
   <body>
-    <section class="cart-container">
+    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <div class="header-top">
+        <h1 class="top-title">Kraken inn</h1>
+        <img
+          class="top-flag"
+          src="assets/images/icons/swedish-flag.png"
+          alt="flag" />
+        <div class="top-cart">
+          <img
+            class="cart-img"
+            src="assets/images/icons/chest.png"
+            alt="cart" />
+          <div class="cart-amount">
+            <p class="amount-text">0</p>
+          </div>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <button class="list-btn" name="home">
+            <img
+              class="btn-img"
+              src="assets/images/icons/pirate-ship.png"
+              alt="home" />
+          </button>
+          <button class="list-btn" name="vegetarian">
+            <img
+              class="btn-img"
+              src="assets/images/icons/carrot.png"
+              alt="vegetarian" />
+          </button>
+          <button class="list-btn" name="fish">
+            <img
+              class="btn-img"
+              src="assets/images/icons/fish.png"
+              alt="fish" />
+          </button>
+          <button class="list-btn" name="meat">
+            <img
+              class="btn-img"
+              src="assets/images/icons/steak.png"
+              alt="meat" />
+          </button>
+          <button class="list-btn" name="drinks">
+            <img
+            class="btn-img"
+              src="assets/images/icons/ale-keg.png"
+              alt="drinks" />
+          </button>
+        </ul>
+      </nav>
+    </header>
+    <main class="card-container">
+      <article class="card">
+        <img
+          class="background-image"
+          src="/assets/Papper_TP.png"
+          alt="background-image" />
+        <img class="food-image" src="assets/food-example.jpg" alt="food" />
+        <h2 class="food-name">Köttfärsås</h2>
+        <p class="food-info">* Lactose free</p>
+        <div class="order-container">
+          <button class="order-button">Order</button>
+          <p class="price">99$</p>
+        </div>
+      </article>
+      <section class="cart-container">
       <img class="paper" src="assets/Papper_TP.png" alt="" />
       <div class="test-container">
         <div class="cart-header">
@@ -82,5 +161,7 @@
       </div>
      
     </section>
+    </main>
+
   </body>
 </html>
