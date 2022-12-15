@@ -1,3 +1,6 @@
+:root {
+    --blue: #087F8C;
+}
 * {
     padding: 0;
     margin: 0;
@@ -8,6 +11,8 @@ body {
     height: 100vh;
     width: 100%;
     background-image: url("assets/wood-background.jpg");
+    font-family: 'Berkshire Swash', cursive;
+    color: var(--blue);
 }
 .card-container {
     margin-top: 3em;
@@ -33,7 +38,7 @@ body {
     box-shadow: 1px 1px 10px black;
 }
 .food-name {
-    color: #087F8C;
+    color: var(--blue);
 }
 
 .food-info {
@@ -56,11 +61,7 @@ body {
     font-weight: bold;
     padding: 1em 2em;
     box-shadow: 1px 1px 10px black;
-}
-
-
-body {
-  width: 100vw;
+    font-family: 'Berkshire Swash', cursive;
 }
 
 /* Header classes */
@@ -109,7 +110,7 @@ body {
 
 /* nav bar  */
 .header-nav {
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
 }
