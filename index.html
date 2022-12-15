@@ -8,6 +8,14 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon-anchor.ico?">
     <script src="app.js" defer></script>
 
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="shoppingCart.css" />
+  </head>
+
+  <body>
+    
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
@@ -61,7 +69,7 @@
           </button>
           <button class="list-btn" name="drinks">
             <img
-              class="btn-img"
+            class="btn-img"
               src="assets/images/icons/ale-keg.png"
               alt="drinks" />
           </button>
@@ -82,6 +90,78 @@
           <p class="price">99$</p>
         </div>
       </article>
+      <section class="cart-container">
+      <img class="paper" src="assets/Papper_TP.png" alt="" />
+      <div class="test-container">
+        <div class="cart-header">
+          <h1 class="heading">Din varukorg</h1>
+
+          <h5 class="remove-all">Remove all</h5>
+        </div>
+        <div class="line"></div>
+        
+        <article class="cart-items">
+          <div class="img-box">
+            <img
+              class="item-img"
+              src="assets/photo-1600891964599-f61ba0e24092.jpg"
+              alt="" />
+          </div>
+          <div class="about">
+            <h1 class="title">Köttfärssås</h1>
+            <h3 class="subtitle">diverse info</h3>
+          </div>
+          <div class="counter">
+            <div class="counter-btn">+</div>
+            <div class="count">1</div>
+            <div class="counter-btn">-</div>
+          </div>
+          <div class="prices">
+            <div class="amount">100kr</div>
+            <div class="remove">Remove</div>
+          </div>
+        </article>
+
+        <article class="cart-items">
+          <div class="img-box">
+            <img
+              class="item-img"
+              src="assets/photo-1600891964599-f61ba0e24092.jpg"
+              alt="" />
+          </div>
+          <div class="about">
+            <h1 class="title">Potatisgratäng</h1>
+            <h3 class="subtitle">diverse info</h3>
+          </div>
+          <div class="counter">
+            <div class="counter-btn">+</div>
+            <div class="count">1</div>
+            <div class="counter-btn">-</div>
+          </div>
+          <div class="prices">
+            <div class="amount">150kr</div>
+            <div class="remove">Remove</div>
+          </div>
+        </article>
+        <hr />
+
+        <div class="checkout">
+            
+          <div class="total">
+            <div>
+              <div class="subtotal">Total kostnad:</div>
+              <div class="items">2 varor</div>
+            </div>
+            <div class="total-amount">250kr</div>
+        </div>
+       
+      <div class="place-order">
+        <button class="place-order-btn">Beställ</button>
+      </div>
+      </div>
+     
+    </section>
     </main>
+
   </body>
 </html>
