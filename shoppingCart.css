@@ -1,0 +1,16 @@
+body{
+    background-image: url("assets/wood-591631_960_720.jpg") ;
+}
+
+.cart-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 5em;
+    margin: 3em auto;
+      
+}
+
+.paper{
+  
+   
+}
