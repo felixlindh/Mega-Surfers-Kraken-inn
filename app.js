@@ -2,10 +2,12 @@ const languageFlag = document.querySelector(".top-flag");
 const cardContainer = document.querySelector(".card-container");
 const searchIcon = document.querySelector(".top-search");
 const navList = document.querySelector(".nav-list");
+const orderAmount = document.querySelector(".amount-text");
 
 let currentLanguage = "swedish";
 let currentCategory = "bbqs";
 const categorys = ["bbqs", "desserts", "sandwiches", "drinks"];
+const orderedItems = [];
 
 searchIcon.addEventListener("click", () => {
   const div = document.createElement("div");
@@ -60,6 +62,26 @@ languageFlag.addEventListener("click", () => {
   setLanguageFunctions(languageDiv);
   document.querySelector(".page-header").append(languageDiv);
 });
+
+function onOrderClick(event) {
+  const card = event.currentTarget.parentElement;
+  const title = card.querySelector("h1").textContent;
+  const check = orderedItems.find((item) => item.title == title);
+  if (check != undefined) {
+    check.quantity++;
+  } else {
+    const imgUrl = card.querySelector(".food-image").src;
+    const price = card.querySelectorAll("p")[1].textContent;
+    const quantity = 1;
+    orderedItems.push({
+      img: imgUrl,
+      title: title,
+      price: price,
+      quantity: quantity,
+    });
+  }
+  orderAmount.textContent = Number(orderAmount.textContent) + 1;
+}
 
 function setLanguageFunctions(container) {
   const flags = container.querySelectorAll(".flag-img");
@@ -171,6 +193,7 @@ function generateOrderCards(object) {
     let button = document.createElement("button");
     button.innerHTML = `Order`;
     button.className = "order-button";
+    button.addEventListener("click", onOrderClick);
     let backgroundImage = document.createElement("img");
     backgroundImage.className = "background-image";
     backgroundImage.src = "/assets/Papper_TP.png";
