@@ -2,6 +2,7 @@ const languageFlag = document.querySelector(".top-flag");
 const cardContainer = document.querySelector(".card-container");
 const searchIcon = document.querySelector(".top-search");
 const navList = document.querySelector(".nav-list");
+const topCart = document.querySelector(".top-cart");
 
 let currentLanguage = "swedish";
 let currentCategory = "bbqs";
@@ -213,3 +214,12 @@ function setCategoryTitle() {
 })();
 
 generateOrderCards(orderCards);
+
+function showReceit() {
+  const receit = document.querySelector(".cart-container");
+  topCart.addEventListener("click", () => {
+    receit.classList.toggle("show");
+  });
+}
+
+showReceit();

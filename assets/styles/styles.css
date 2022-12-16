@@ -126,6 +126,7 @@ body {
 
 .top-cart {
   position: relative;
+  z-index: 15;
 }
 
 .top-cart > .cart-img {
@@ -139,6 +140,7 @@ body {
   background-image: radial-gradient(circle, black 33%, transparent);
   padding: 25%;
   border-radius: 50%;
+ 
 }
 
 .cart-amount > .amount-text {
