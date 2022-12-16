@@ -21,19 +21,19 @@ searchIcon.addEventListener("click", () => {
     <h2 class="search-screen-title">Search and filter</h2>
     <div class="search-screen-filters">
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
+            <input id="barbeques" class="filters-checkbox" type="checkbox" />
             <span>Barbeques</span>
         </p>
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
+            <input id="desserts" class="filters-checkbox" type="checkbox" />
             <span>Desserts</span>
         </p>
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
+            <input id="sandwiches" class="filters-checkbox" type="checkbox" />
             <span>Sandwiches</span>
         </p>
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
+            <input id="beverages" class="filters-checkbox" type="checkbox" />
             <span>Beverages</span>
         </p>
     </div>
@@ -45,9 +45,27 @@ searchIcon.addEventListener("click", () => {
   `;
   document.querySelector(".page-header").append(div);
   div.querySelector(".user-input-search-btn").addEventListener("click", () => {
-    document.querySelector(".top-search-screen").remove();
+    /* document.querySelector(".top-search-screen").remove(); */
+    filterFoods();
   });
 });
+
+function filterFoods() {
+  const bbqInput = document.querySelector("#barbeques");
+  const dessertInput = document.querySelector("#desserts");
+  const sandwichInput = document.querySelector("#sandwiches");
+  const beveragesInput = document.querySelector("#beverages");
+  const filterArray = [bbqInput, dessertInput, sandwichInput, beveragesInput]
+  cardContainer.innerHTML = "";
+  for(let i = 0; i < filterArray.length; i++) {
+
+    if(filterArray[i].checked == true) {
+        currentCategory = categorys[i];
+        generateOrderCards(orderCards)
+    } 
+  }
+  document.querySelector(".top-search-screen").remove(); 
+}
 
 languageFlag.addEventListener("click", () => {
   const languageDiv = document.createElement("div");
@@ -185,7 +203,6 @@ const orderCards = {
 };
 
 function generateOrderCards(object) {
-  cardContainer.innerHTML = "";
   setCategoryTitle();
   for (let i = 0; i < object[currentCategory].length; i++) {
     const foods = object[currentCategory];
@@ -229,6 +246,7 @@ function setCategoryTitle() {
       document.documentElement.scrollTop = 0;
       setTimeout(() => {
         currentCategory = categorys[i - 1];
+        cardContainer.innerHTML = "";
         generateOrderCards(orderCards);
         cardContainer.classList.toggle("fade");
       }, 250);
