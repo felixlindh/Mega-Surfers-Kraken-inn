@@ -29,6 +29,10 @@ body {
   height: 25em;
 }
 
+.card > p {
+  max-width: 80%;
+}
+
 .background-image {
   position: absolute;
   z-index: -1;

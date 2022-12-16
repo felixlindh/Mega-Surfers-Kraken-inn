@@ -77,23 +77,31 @@ function setLanguage(language) {
 }
 
 const orderCards = [
+  /* bbqs */
   {
-    image: '<img src="assets/food-example.jpg" alt="food" />',
-    titel: "<h1>Tacos</h1>",
-    info: "<p>* Vegan<p>",
-    price: "<p>1000$</p>",
+    image: `<img src="${db.bbqs[0].img}" alt="food" />` ,
+    titel: `<h1>${db.bbqs[0].name}</h1>` ,
+    info:  `<p>${db.bbqs[0].dsc}</p>` ,
+    price: `<p>${db.bbqs[0].price}$</p>`,
   },
   {
-    image: '<img src="assets/food-example.jpg" alt="food" />',
-    titel: "<h1>Korvstroganoff</h1>",
-    info: "<p>* Äggfri<p>",
-    price: "<p>2000$</p>",
+    image: `<img src="${db.bbqs[1].img}" alt="food" />` ,
+    titel: `<h1>${db.bbqs[1].name}</h1>` ,
+    info:  `<p>${db.bbqs[1].dsc}</p>` ,
+    price: `<p>${db.bbqs[1].price}$</p>`,
   },
   {
-    image: '<img src="assets/food-example.jpg" alt="food" />',
-    titel: "<h1>Köttbullar</h1>",
-    info: "<p>* Sojafri<p>",
-    price: "<p>108$</p>",
+    image: `<img src="${db.bbqs[2].img}" alt="food" />` ,
+    titel: `<h1>${db.bbqs[2].name}</h1>` ,
+    info:  `<p>${db.bbqs[2].dsc}</p>` ,
+    price: `<p>${db.bbqs[2].price}$</p>`,
+  },
+  /* sandwitches */
+  {
+    image: `<img src="${db.sandwiches[0].img}" alt="food" />` ,
+    titel: `<h1>${db.sandwiches[0].name}</h1>` ,
+    info:  `<p>${db.sandwiches[0].dsc}</p>` ,
+    price: `<p>${db.sandwiches[0].price}$</p>`,
   },
 ];
 
