@@ -10,7 +10,7 @@
   <script src="assets/scripts/db.js" defer></script>
   <script src="app.js" defer></script>
   <link rel="stylesheet" href="assets/styles/styles.css" />
-  <link rel="stylesheet" href="assets/styles/shoppingCart.css" />
+  <link rel="stylesheet" href="assets/styles/receit.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet" />
@@ -44,6 +44,7 @@
           <img class="btn-img" src="assets/images/icons/sandwich.png" alt="sandwiches" />
         </button>
 
+
         <button class="list-btn" name="drinks">
           <img class="btn-img" src="assets/images/icons/ale-keg.png" alt="drinks" />
         </button>
@@ -52,54 +53,24 @@
   </header>
   <main class="card-container"></main>
 
+
+
   <section class="cart-container">
     <img class="paper" src="assets/Papper_TP.png" alt="" />
-    <div class="test-container">
-      <div class="cart-header">
-        <h1 class="heading">Din varukorg</h1>
-
-        <h5 class="remove-all">Remove all</h5>
-      </div>
-      <div class="line"></div>
-
+    <h1 class="heading">Dina köp</h1>
+    <div class="line"></div>
+    <div class="inside-paper">
       <article class="cart-items">
-        <div class="img-box">
-          <img class="item-img" src="assets/photo-1600891964599-f61ba0e24092.jpg" alt="" />
-        </div>
+        <img class="item-img" src="assets/photo-1600891964599-f61ba0e24092.jpg" alt="" />
+
         <div class="about">
           <h1 class="title">Köttfärssås</h1>
-          <h3 class="subtitle">diverse info</h3>
         </div>
-        <div class="counter">
-          <div class="counter-btn">+</div>
-          <div class="count">1</div>
-          <div class="counter-btn">-</div>
-        </div>
-        <div class="prices">
-          <div class="amount">100kr</div>
-          <div class="remove">Remove</div>
-        </div>
+        <div class="count">1</div>
+        <div class="price">100kr</div>
       </article>
 
-      <article class="cart-items">
-        <div class="img-box">
-          <img class="item-img" src="assets/photo-1600891964599-f61ba0e24092.jpg" alt="" />
-        </div>
-        <div class="about">
-          <h1 class="title">Potatisgratäng</h1>
-          <h3 class="subtitle">diverse info</h3>
-        </div>
-        <div class="counter">
-          <div class="counter-btn">+</div>
-          <div class="count">1</div>
-          <div class="counter-btn">-</div>
-        </div>
-        <div class="prices">
-          <div class="amount">150kr</div>
-          <div class="remove">Remove</div>
-        </div>
-      </article>
-      <hr />
+      <div class="line"></div>
 
       <div class="checkout">
         <div class="total">
@@ -110,9 +81,11 @@
           <div class="total-amount">250kr</div>
         </div>
       </div>
-      <div class="place-order">
-        <button class="place-order-btn">Beställ</button>
-      </div>
+
+    </div>
+    <div class="place-order">
+      <button class="place-order-btn">Beställ</button>
+    </div>
     </div>
   </section>
 </body>
