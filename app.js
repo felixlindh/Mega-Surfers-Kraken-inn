@@ -1,11 +1,13 @@
 const languageFlag = document.querySelector(".top-flag");
 const cardContainer = document.querySelector(".card-container");
 const searchIcon = document.querySelector(".top-search");
+const navList = document.querySelector(".nav-list");
 
 let currentLanguage = "swedish";
+let currentCategory = "bbqs";
+const categorys = ["bbqs", "desserts", "sandwiches", "drinks"];
 
 searchIcon.addEventListener("click", () => {
-  console.log("search click");
   const div = document.createElement("div");
   div.className = "top-search-screen";
   div.innerHTML = `
@@ -76,37 +78,94 @@ function setLanguage(language) {
   languageFlag.setAttribute("src", `assets/images/icons/${language}-flag.png`);
 }
 
-const orderCards = [
-  /* bbqs */
-  {
-    image: `<img src="${db.bbqs[0].img}" alt="food" />` ,
-    titel: `<h1>${db.bbqs[0].name}</h1>` ,
-    info:  `<p>${db.bbqs[0].dsc}</p>` ,
-    price: `<p>${db.bbqs[0].price}$</p>`,
-  },
-  {
-    image: `<img src="${db.bbqs[1].img}" alt="food" />` ,
-    titel: `<h1>${db.bbqs[1].name}</h1>` ,
-    info:  `<p>${db.bbqs[1].dsc}</p>` ,
-    price: `<p>${db.bbqs[1].price}$</p>`,
-  },
-  {
-    image: `<img src="${db.bbqs[2].img}" alt="food" />` ,
-    titel: `<h1>${db.bbqs[2].name}</h1>` ,
-    info:  `<p>${db.bbqs[2].dsc}</p>` ,
-    price: `<p>${db.bbqs[2].price}$</p>`,
-  },
-  /* sandwitches */
-  {
-    image: `<img src="${db.sandwiches[0].img}" alt="food" />` ,
-    titel: `<h1>${db.sandwiches[0].name}</h1>` ,
-    info:  `<p>${db.sandwiches[0].dsc}</p>` ,
-    price: `<p>${db.sandwiches[0].price}$</p>`,
-  },
-];
+const orderCards = {
+  bbqs: [
+    {
+      image: `<img src="${db.bbqs[0].img}" alt="food" />`,
+      titel: `<h1>${db.bbqs[0].name}</h1>`,
+      info: `<p>${db.bbqs[0].dsc}</p>`,
+      price: `<p>${db.bbqs[0].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.bbqs[1].img}" alt="food" />`,
+      titel: `<h1>${db.bbqs[1].name}</h1>`,
+      info: `<p>${db.bbqs[1].dsc}</p>`,
+      price: `<p>${db.bbqs[1].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.bbqs[2].img}" alt="food" />`,
+      titel: `<h1>${db.bbqs[2].name}</h1>`,
+      info: `<p>${db.bbqs[2].dsc}</p>`,
+      price: `<p>${db.bbqs[2].price}$</p>`,
+    },
+  ],
+  sandwiches: [
+    {
+      image: `<img src="${db.sandwiches[0].img}" alt="food" />`,
+      titel: `<h1>${db.sandwiches[0].name}</h1>`,
+      info: `<p>${db.sandwiches[0].dsc}</p>`,
+      price: `<p>${db.sandwiches[0].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.sandwiches[1].img}" alt="food" />`,
+      titel: `<h1>${db.sandwiches[1].name}</h1>`,
+      info: `<p>${db.sandwiches[1].dsc}</p>`,
+      price: `<p>${db.sandwiches[1].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.sandwiches[2].img}" alt="food" />`,
+      titel: `<h1>${db.sandwiches[2].name}</h1>`,
+      info: `<p>${db.sandwiches[2].dsc}</p>`,
+      price: `<p>${db.sandwiches[2].price}$</p>`,
+    },
+  ],
+  desserts: [
+    {
+      image: `<img src="${db.desserts[0].img}" alt="food" />`,
+      titel: `<h1>${db.desserts[0].name}</h1>`,
+      info: `<p>${db.desserts[0].dsc}</p>`,
+      price: `<p>${db.desserts[0].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.desserts[1].img}" alt="food" />`,
+      titel: `<h1>${db.desserts[1].name}</h1>`,
+      info: `<p>${db.desserts[1].dsc}</p>`,
+      price: `<p>${db.desserts[1].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.desserts[2].img}" alt="food" />`,
+      titel: `<h1>${db.desserts[2].name}</h1>`,
+      info: `<p>${db.desserts[2].dsc}</p>`,
+      price: `<p>${db.desserts[2].price}$</p>`,
+    },
+  ],
+  drinks: [
+    {
+      image: `<img src="${db.drinks[0].img}" alt="food" />`,
+      titel: `<h1>${db.drinks[0].name}</h1>`,
+      info: `<p>${db.drinks[0].dsc}</p>`,
+      price: `<p>${db.drinks[0].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.drinks[1].img}" alt="food" />`,
+      titel: `<h1>${db.drinks[1].name}</h1>`,
+      info: `<p>${db.drinks[1].dsc}</p>`,
+      price: `<p>${db.drinks[1].price}$</p>`,
+    },
+    {
+      image: `<img src="${db.drinks[2].img}" alt="food" />`,
+      titel: `<h1>${db.drinks[2].name}</h1>`,
+      info: `<p>${db.drinks[2].dsc}</p>`,
+      price: `<p>${db.drinks[2].price}$</p>`,
+    },
+  ],
+};
 
 function generateOrderCards(object) {
-  for (let i = 0; i < object.length; i++) {
+  cardContainer.innerHTML = "";
+  setCategoryTitle();
+  for (let i = 0; i < object[currentCategory].length; i++) {
+    const foods = object[currentCategory];
     let card = document.createElement("article");
     card.className = "card";
     let button = document.createElement("button");
@@ -117,12 +176,40 @@ function generateOrderCards(object) {
     backgroundImage.src = "/assets/Papper_TP.png";
 
     card.innerHTML =
-      object[i].image + object[i].titel + object[i].info + object[i].price;
+      foods[i].image + foods[i].titel + foods[i].info + foods[i].price;
     card.querySelector("img").className = "food-image";
     card.append(backgroundImage);
     card.append(button);
     cardContainer.append(card);
   }
 }
+
+function setCategoryTitle() {
+  const titleContainer = document.createElement("div");
+  titleContainer.className = "container-category";
+  titleContainer.innerHTML = `
+    <img class="category-background" src="assets/images/icons/scroll.png" />
+    <h2 class="category-title">${
+      currentCategory[0].toUpperCase() +
+      currentCategory.slice(1, currentCategory.length)
+    }</h2>
+  `;
+  cardContainer.append(titleContainer);
+}
+
+(() => {
+  for (let i = 1; i < navList.children.length; i++) {
+    navList.children[i].addEventListener("click", () => {
+      cardContainer.classList.toggle("fade");
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      setTimeout(() => {
+        currentCategory = categorys[i - 1];
+        generateOrderCards(orderCards);
+        cardContainer.classList.toggle("fade");
+      }, 250);
+    });
+  }
+})();
 
 generateOrderCards(orderCards);
