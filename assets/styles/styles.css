@@ -212,6 +212,7 @@ body {
   bottom: 0;
   background-color: var(--brown);
   padding: 0.3em;
+  z-index: 20;
 }
 
 .nav-list {
