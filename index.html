@@ -1,149 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kraken inn</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon-anchor.ico?" />
-    <script src="assets/scripts/db.js" defer></script>
-    <script src="app.js" defer></script>
-    <link rel="stylesheet" href="assets/styles/styles.css" />
-    <link rel="stylesheet" href="assets/styles/shoppingCart.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap"
-      rel="stylesheet" />
-  </head>
 
-  <body>
-    <header class="page-header">
-      <div class="header-top">
-        <h1 class="top-title">Kraken inn</h1>
-        <img
-          class="top-search"
-          src="assets/images/icons/spyglass.png"
-          alt="search" />
-        <img
-          class="top-flag"
-          src="assets/images/icons/swedish-flag.png"
-          alt="flag" />
-        <div class="top-cart">
-          <img
-            class="cart-img"
-            src="assets/images/icons/chest.png"
-            alt="cart" />
-          <div class="cart-amount">
-            <p class="amount-text">0</p>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kraken inn</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon-anchor.ico?" />
+  <script src="assets/scripts/db.js" defer></script>
+  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="assets/styles/styles.css" />
+  <link rel="stylesheet" href="assets/styles/shoppingCart.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="page-header">
+    <div class="header-top">
+      <h1 class="top-title">Kraken inn</h1>
+      <img class="top-search" src="assets/images/icons/spyglass.png" alt="search" />
+      <img class="top-flag" src="assets/images/icons/swedish-flag.png" alt="flag" />
+      <div class="top-cart">
+        <img class="cart-img" src="assets/images/icons/chest.png" alt="cart" />
+        <div class="cart-amount">
+          <p class="amount-text">0</p>
         </div>
       </div>
-      <nav class="header-nav">
-        <ul class="nav-list">
-          <button class="list-btn" name="home">
-            <img
-              class="btn-img"
-              src="assets/images/icons/pirate-ship.png"
-              alt="home" />
-          </button>
-          <button class="list-btn" name="vegetarian">
-            <img
-              class="btn-img"
-              src="assets/images/icons/carrot.png"
-              alt="vegetarian" />
-          </button>
-          <button class="list-btn" name="fish">
-            <img
-              class="btn-img"
-              src="assets/images/icons/fish.png"
-              alt="fish" />
-          </button>
-          <button class="list-btn" name="meat">
-            <img
-              class="btn-img"
-              src="assets/images/icons/steak.png"
-              alt="meat" />
-          </button>
-          <button class="list-btn" name="drinks">
-            <img
-              class="btn-img"
-              src="assets/images/icons/ale-keg.png"
-              alt="drinks" />
-          </button>
-        </ul>
-      </nav>
-    </header>
-    <main class="card-container"></main>
+    </div>
+    <nav class="header-nav">
+      <ul class="nav-list">
+        <button class="list-btn" name="home">
+          <img class="btn-img" src="assets/images/icons/pirate-ship.png" alt="home" />
+        </button>
+        <button class="list-btn" name="meat">
+          <img class="btn-img" src="assets/images/icons/steak.png" alt="meat" />
+        </button>
+        <button class="list-btn" name="dessert">
+          <img class="btn-img" src="assets/images/icons/pie-dessert.png" alt="dessert" />
+        </button>
+        <button class="list-btn" name="sandwich">
+          <img class="btn-img" src="assets/images/icons/sandwich.png" alt="sandwiches" />
+        </button>
 
-    <section class="cart-container">
-      <img class="paper" src="assets/Papper_TP.png" alt="" />
-      <div class="test-container">
-        <div class="cart-header">
-          <h1 class="heading">Din varukorg</h1>
+        <button class="list-btn" name="drinks">
+          <img class="btn-img" src="assets/images/icons/ale-keg.png" alt="drinks" />
+        </button>
+      </ul>
+    </nav>
+  </header>
+  <main class="card-container"></main>
 
-          <h5 class="remove-all">Remove all</h5>
+  <section class="cart-container">
+    <img class="paper" src="assets/Papper_TP.png" alt="" />
+    <div class="test-container">
+      <div class="cart-header">
+        <h1 class="heading">Din varukorg</h1>
+
+        <h5 class="remove-all">Remove all</h5>
+      </div>
+      <div class="line"></div>
+
+      <article class="cart-items">
+        <div class="img-box">
+          <img class="item-img" src="assets/photo-1600891964599-f61ba0e24092.jpg" alt="" />
         </div>
-        <div class="line"></div>
-
-        <article class="cart-items">
-          <div class="img-box">
-            <img
-              class="item-img"
-              src="assets/photo-1600891964599-f61ba0e24092.jpg"
-              alt="" />
-          </div>
-          <div class="about">
-            <h1 class="title">Köttfärssås</h1>
-            <h3 class="subtitle">diverse info</h3>
-          </div>
-          <div class="counter">
-            <div class="counter-btn">+</div>
-            <div class="count">1</div>
-            <div class="counter-btn">-</div>
-          </div>
-          <div class="prices">
-            <div class="amount">100kr</div>
-            <div class="remove">Remove</div>
-          </div>
-        </article>
-
-        <article class="cart-items">
-          <div class="img-box">
-            <img
-              class="item-img"
-              src="assets/photo-1600891964599-f61ba0e24092.jpg"
-              alt="" />
-          </div>
-          <div class="about">
-            <h1 class="title">Potatisgratäng</h1>
-            <h3 class="subtitle">diverse info</h3>
-          </div>
-          <div class="counter">
-            <div class="counter-btn">+</div>
-            <div class="count">1</div>
-            <div class="counter-btn">-</div>
-          </div>
-          <div class="prices">
-            <div class="amount">150kr</div>
-            <div class="remove">Remove</div>
-          </div>
-        </article>
-        <hr />
-
-        <div class="checkout">
-          <div class="total">
-            <div>
-              <div class="subtotal">Total kostnad:</div>
-              <div class="items">2 varor</div>
-            </div>
-            <div class="total-amount">250kr</div>
-          </div>
+        <div class="about">
+          <h1 class="title">Köttfärssås</h1>
+          <h3 class="subtitle">diverse info</h3>
         </div>
-        <div class="place-order">
-          <button class="place-order-btn">Beställ</button>
+        <div class="counter">
+          <div class="counter-btn">+</div>
+          <div class="count">1</div>
+          <div class="counter-btn">-</div>
+        </div>
+        <div class="prices">
+          <div class="amount">100kr</div>
+          <div class="remove">Remove</div>
+        </div>
+      </article>
+
+      <article class="cart-items">
+        <div class="img-box">
+          <img class="item-img" src="assets/photo-1600891964599-f61ba0e24092.jpg" alt="" />
+        </div>
+        <div class="about">
+          <h1 class="title">Potatisgratäng</h1>
+          <h3 class="subtitle">diverse info</h3>
+        </div>
+        <div class="counter">
+          <div class="counter-btn">+</div>
+          <div class="count">1</div>
+          <div class="counter-btn">-</div>
+        </div>
+        <div class="prices">
+          <div class="amount">150kr</div>
+          <div class="remove">Remove</div>
+        </div>
+      </article>
+      <hr />
+
+      <div class="checkout">
+        <div class="total">
+          <div>
+            <div class="subtotal">Total kostnad:</div>
+            <div class="items">2 varor</div>
+          </div>
+          <div class="total-amount">250kr</div>
         </div>
       </div>
-    </section>
-  </body>
+      <div class="place-order">
+        <button class="place-order-btn">Beställ</button>
+      </div>
+    </div>
+  </section>
+</body>
+
 </html>

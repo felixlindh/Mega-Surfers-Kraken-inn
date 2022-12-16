@@ -13,28 +13,28 @@ searchIcon.addEventListener("click", () => {
     <img
         class="search-screen-background"
         src="assets/images/icons/scroll.png" />
-    <h2 class="search-screen-title">Sök och filtrera</h2>
+    <h2 class="search-screen-title">Search and filter</h2>
     <div class="search-screen-filters">
         <p class="filters-options">
             <input class="filters-checkbox" type="checkbox" />
-            <span>Glutenfritt</span>
+            <span>Barbeques</span>
         </p>
         <p class="filters-options">
             <input class="filters-checkbox" type="checkbox" />
-            <span>Laktosfritt</span>
+            <span>Desserts</span>
         </p>
         <p class="filters-options">
             <input class="filters-checkbox" type="checkbox" />
-            <span>Äggfritt</span>
+            <span>Sandwiches</span>
         </p>
         <p class="filters-options">
             <input class="filters-checkbox" type="checkbox" />
-            <span>Soja</span>
+            <span>Beverages</span>
         </p>
     </div>
     <div class="search-screen-user-input">
         <input class="user-input-input" />
-        <button class="user-input-search-btn">Sök</button>
+        <button class="user-input-search-btn">Search</button>
         </div>
     </div>
   `;
