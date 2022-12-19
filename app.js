@@ -52,16 +52,41 @@ function filterFoods() {
   const dessertInput = document.querySelector("#desserts");
   const sandwichInput = document.querySelector("#sandwiches");
   const beveragesInput = document.querySelector("#beverages");
-  const filterArray = [bbqInput, dessertInput, sandwichInput, beveragesInput]
+  const userInput = document.querySelector(".user-input-input");
+  const filterArray = [bbqInput, dessertInput, sandwichInput, beveragesInput];
   cardContainer.innerHTML = "";
-  for(let i = 0; i < filterArray.length; i++) {
-
-    if(filterArray[i].checked == true) {
-        currentCategory = categorys[i];
-        generateOrderCards(orderCards)
-    } 
+  let noFilterTicked = true;
+  for (let i = 0; i < filterArray.length; i++) {
+    if (filterArray[i].checked == true) {
+      noFilterTicked = false;
+      currentCategory = categorys[i];
+      let items = orderCards[currentCategory],
+        searchQuery = userInput.value.toLowerCase();
+      if (searchQuery != "") {
+        items = items.filter(
+          (item) =>
+            item.titel.toLowerCase().includes(searchQuery) ||
+            item.info.toLowerCase().includes(searchQuery)
+        );
+      }
+      generateOrderCards(items);
+    }
   }
-  document.querySelector(".top-search-screen").remove(); 
+  if (noFilterTicked) {
+    for (let i = 0; i < categorys.length; i++) {
+      let items = orderCards[categorys[i]],
+        searchQuery = userInput.value.toLowerCase();
+      if (searchQuery != "") {
+        items = items.filter(
+          (item) =>
+            item.titel.toLowerCase().includes(searchQuery) ||
+            item.info.toLowerCase().includes(searchQuery)
+        );
+      }
+      items.length > 0 && generateOrderCards(items);
+    }
+  }
+  document.querySelector(".top-search-screen").remove();
 }
 
 languageFlag.addEventListener("click", () => {
@@ -181,8 +206,8 @@ const orderCards = {
 
 function generateOrderCards(object) {
   setCategoryTitle();
-  for (let i = 0; i < object[currentCategory].length; i++) {
-    const foods = object[currentCategory];
+  for (let i = 0; i < object.length; i++) {
+    const foods = object;
     let card = document.createElement("article");
     card.className = "card";
     let button = document.createElement("button");
@@ -223,11 +248,11 @@ function setCategoryTitle() {
       setTimeout(() => {
         currentCategory = categorys[i - 1];
         cardContainer.innerHTML = "";
-        generateOrderCards(orderCards);
+        generateOrderCards(orderCards[currentCategory]);
         cardContainer.classList.toggle("fade");
       }, 250);
     });
   }
 })();
 
-generateOrderCards(orderCards);
+generateOrderCards(orderCards[currentCategory]);
