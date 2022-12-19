@@ -178,7 +178,14 @@ function onOrderClick(event) {
   let amountItem = document.querySelector(".item-amount");
   console.log(amountItem);
   let amountPrice = document.querySelector(".total-amount");
+  amountPrice.textContent =
+    calculateTotalPrice(orderedItems).toFixed(2) + " Sek";
 
+  setTotalItemAmount(orderedItems, amountItem);
+  orderAmount.textContent = Number(orderAmount.textContent) + 1;
+}
+
+function calculateTotalPrice(orderedItems) {
   let priceSum = 0;
 
   for (let i = 0; i < orderedItems.length; i++) {
@@ -190,11 +197,7 @@ function onOrderClick(event) {
       priceSum += Number(priceText);
     }
   }
-  amountPrice.textContent = priceSum.toFixed(2) + " Sek";
-  console.log(amountPrice);
-
-  setTotalItemAmount(orderedItems, amountItem);
-  orderAmount.textContent = Number(orderAmount.textContent) + 1;
+  return priceSum;
 }
 
 function setTotalItemAmount(orderedItems, amountItem) {
