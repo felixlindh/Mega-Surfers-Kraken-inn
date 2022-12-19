@@ -21,20 +21,20 @@ searchIcon.addEventListener("click", () => {
     <h2 class="search-screen-title">Search and filter</h2>
     <div class="search-screen-filters">
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
+            <input id="barbeques" class="filters-checkbox" type="checkbox" />
             <span>Barbeques</span>
         </p>
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
+            <input id="desserts" class="filters-checkbox" type="checkbox" />
             <span>Desserts</span>
         </p>
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
+            <input id="sandwiches" class="filters-checkbox" type="checkbox" />
             <span>Sandwiches</span>
         </p>
         <p class="filters-options">
-            <input class="filters-checkbox" type="checkbox" />
-            <span>Beverages</span>
+            <input id="beverages" class="filters-checkbox" type="checkbox" />
+            <span>Drinks</span>
         </p>
     </div>
     <div class="search-screen-user-input">
@@ -43,11 +43,69 @@ searchIcon.addEventListener("click", () => {
         </div>
     </div>
   `;
+
   document.querySelector(".page-header").append(div);
+  swapLanguageSearch();
   div.querySelector(".user-input-search-btn").addEventListener("click", () => {
-    document.querySelector(".top-search-screen").remove();
+    filterFoods();
   });
 });
+
+function filterFoods() {
+  const bbqInput = document.querySelector("#barbeques");
+  const dessertInput = document.querySelector("#desserts");
+  const sandwichInput = document.querySelector("#sandwiches");
+  const beveragesInput = document.querySelector("#beverages");
+  const userInput = document.querySelector(".user-input-input");
+  const filterArray = [bbqInput, dessertInput, sandwichInput, beveragesInput];
+  cardContainer.innerHTML = "";
+  let noFilterTicked = true;
+  for (let i = 0; i < filterArray.length; i++) {
+    if (filterArray[i].checked == true) {
+      noFilterTicked = false;
+      setCategoryTitle(i);
+      let items = searchFoods(userInput.value, orderCards[currentCategory]);
+      items.length > 0 && generateOrderCards(items);
+    }
+  }
+  if (noFilterTicked) {
+    for (let i = 0; i < categorys.length; i++) {
+      let items = searchFoods(userInput.value, orderCards[categorys[i]]);
+      if (items.length > 0) {
+        setCategoryTitle(i);
+        generateOrderCards(items);
+      }
+    }
+  }
+  document.querySelector(".top-search-screen").remove();
+  cardContainer.innerHTML == "" && onNoItemsFound();
+}
+
+function searchFoods(searchQuery, list) {
+  let items = list,
+    newSearchQuery = searchQuery.toLowerCase();
+  if (searchQuery != "") {
+    items = items.filter(
+      (item) =>
+        item.titel.toLowerCase().includes(newSearchQuery) ||
+        item.info.toLowerCase().includes(newSearchQuery)
+    );
+  }
+  return items;
+}
+
+function onNoItemsFound() {
+  cardContainer.innerHTML = `
+  <article class="card">
+  <img src="assets/images/icons/scroll.png" class="background-image"/>
+    <h1 style="width: 75%">${
+      currentLanguage == "swedish"
+        ? "Hittade inte det du sökte efter"
+        : "Could not find what you were looking for"
+    }</h1>
+  </article>
+  `;
+}
 
 languageFlag.addEventListener("click", () => {
   const languageDiv = document.createElement("div");
@@ -62,7 +120,16 @@ languageFlag.addEventListener("click", () => {
   `;
   setLanguageFunctions(languageDiv);
   document.querySelector(".page-header").append(languageDiv);
+  swapSelectLanguageTitle();
 });
+
+function swapSelectLanguageTitle() {
+  const title = document.querySelector(".lang-select-title");
+
+  if (currentLanguage == "swedish") {
+    title.innerText = "Välj ditt språk";
+  }
+}
 
 function onOrderClick(event) {
   const card = event.currentTarget.parentElement;
@@ -108,7 +175,8 @@ function onOrderClick(event) {
     insidePaper.firstChild.before(receiptItem);
     receiptItem.append(itemImg, itemTitle, itemCount, itemPrice);
   }
-  let amountItem = document.querySelector(".items");
+  let amountItem = document.querySelector(".item-amount");
+  console.log(amountItem);
   let amountPrice = document.querySelector(".total-amount");
 
   let priceSum = 0;
@@ -125,23 +193,32 @@ function onOrderClick(event) {
   amountPrice.textContent = priceSum.toFixed(2) + " Sek";
   console.log(amountPrice);
 
+  setTotalItemAmount(orderedItems, amountItem);
+  orderAmount.textContent = Number(orderAmount.textContent) + 1;
+}
+
+function setTotalItemAmount(orderedItems, amountItem) {
   let count = 0;
   for (let i = 0; i < orderedItems.length; i++) {
     count += orderedItems[i].quantity;
   }
   console.log(count);
-  amountItem.textContent = "Varor: " + count;
-  orderAmount.textContent = Number(orderAmount.textContent) + 1;
+
+  amountItem.textContent = `${count}`;
 }
 
 function setLanguageFunctions(container) {
   const flags = container.querySelectorAll(".flag-img");
   flags[0].addEventListener("click", () => {
     setLanguage("swedish");
+    swapLanguageButtons();
+    swapCategoryLanguage();
     container.remove();
   });
   flags[1].addEventListener("click", () => {
     setLanguage("english");
+    swapLanguageButtons();
+    swapCategoryLanguage();
     container.remove();
   });
 }
@@ -149,6 +226,59 @@ function setLanguageFunctions(container) {
 function setLanguage(language) {
   currentLanguage = language;
   languageFlag.setAttribute("src", `assets/images/icons/${language}-flag.png`);
+}
+
+function swapLanguageSearch() {
+  const headerSearch = document.querySelector(".search-screen-title");
+  const spanContainer = document.querySelector(".search-screen-filters");
+  const spans = spanContainer.querySelectorAll("span");
+  const searchButton = document.querySelector(".user-input-search-btn");
+
+  if (currentLanguage == "swedish") {
+    headerSearch.innerText = "Sök och filtrera";
+    spans[0].innerText = "Barbeques";
+    spans[1].innerText = "Efterätter";
+    spans[2].innerText = "Smörgåsar";
+    spans[3].innerText = "Drycker";
+    searchButton.innerText = "Sök";
+  } else if (currentLanguage == "english") {
+    headerSearch.innerText = "Search and filter";
+    spans[0].innerText = "Barbeques";
+    spans[1].innerText = "Desserts";
+    spans[2].innerText = "Sandwiches";
+    spans[3].innerText = "Drinks";
+    searchButton.innerText = "Search";
+  }
+}
+function swapLanguageReceit() {
+  const receitHeader = document.querySelector(".heading");
+  const totalCost = document.querySelector(".subtotal");
+  const itemAmount = document.querySelector(".items");
+  if (currentLanguage == "swedish") {
+    receitHeader.innerText = "Dina köp";
+    totalCost.innerText = "Total konstnad";
+    itemAmount.innerHTML = 'Varor: <span class="item-amount"> </span>';
+  } else if (currentLanguage == "english") {
+    receitHeader.innerText = "Your purchases";
+    totalCost.innerText = "Total cost";
+    itemAmount.innerHTML = 'Items: <span class="item-amount"> </span>';
+  }
+  let amountItem = document.querySelector(".item-amount");
+  setTotalItemAmount(orderedItems, amountItem);
+}
+
+function swapLanguageButtons() {
+  const orderButtons = document.querySelectorAll(".order-button");
+
+  if (currentLanguage == "swedish") {
+    orderButtons.forEach((button) => {
+      button.innerText = "Beställ";
+    });
+  } else if (currentLanguage == "english") {
+    orderButtons.forEach((button) => {
+      button.innerText = "Order";
+    });
+  }
 }
 
 const orderCards = {
@@ -235,10 +365,8 @@ const orderCards = {
 };
 
 function generateOrderCards(object) {
-  cardContainer.innerHTML = "";
-  setCategoryTitle();
-  for (let i = 0; i < object[currentCategory].length; i++) {
-    const foods = object[currentCategory];
+  for (let i = 0; i < object.length; i++) {
+    const foods = object;
     let card = document.createElement("article");
     card.className = "card";
     let button = document.createElement("button");
@@ -256,9 +384,11 @@ function generateOrderCards(object) {
     card.append(button);
     cardContainer.append(card);
   }
+  swapLanguageButtons();
 }
 
-function setCategoryTitle() {
+function setCategoryTitle(index) {
+  currentCategory = categorys[index];
   const titleContainer = document.createElement("div");
   titleContainer.className = "container-category";
   titleContainer.innerHTML = `
@@ -268,7 +398,37 @@ function setCategoryTitle() {
       currentCategory.slice(1, currentCategory.length)
     }</h2>
   `;
+
   cardContainer.append(titleContainer);
+  swapCategoryLanguage();
+}
+
+function swapCategoryLanguage() {
+  const titles = document.querySelectorAll(".category-title");
+
+  titles.forEach((title) => {
+    if (currentLanguage == "swedish") {
+      if (title.innerHTML == "Desserts") {
+        title.innerText = "Efterätter";
+      }
+      if (title.innerHTML == "Sandwiches") {
+        title.innerText = "Smörgåsar";
+      }
+      if (title.innerHTML == "Drinks") {
+        title.innerText = "Drycker";
+      }
+    } else if (currentLanguage == "english") {
+      if (title.innerHTML == "Efterätter") {
+        title.innerText = "Desserts";
+      }
+      if (title.innerHTML == "Smörgåsar") {
+        title.innerText = "Sandwiches";
+      }
+      if (title.innerHTML == "Drycker") {
+        title.innerText = "Drinks";
+      }
+    }
+  });
 }
 
 (() => {
@@ -278,25 +438,23 @@ function setCategoryTitle() {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       setTimeout(() => {
-        currentCategory = categorys[i - 1];
-        generateOrderCards(orderCards);
+        cardContainer.innerHTML = "";
+        setCategoryTitle(i - 1);
+        generateOrderCards(orderCards[currentCategory]);
         cardContainer.classList.toggle("fade");
       }, 250);
     });
   }
 })();
 
-generateOrderCards(orderCards);
-
 function showReceipt() {
   const receit = document.querySelector(".cart-container");
   topCart.addEventListener("click", () => {
+    swapLanguageReceit();
     receit.classList.toggle("show");
   });
 }
 showReceipt();
 
-// function addToCart(item) {
-//   let button = document.querySelector(".order-button");
-//   let item =
-// }
+setCategoryTitle(0);
+generateOrderCards(orderCards[currentCategory]);
