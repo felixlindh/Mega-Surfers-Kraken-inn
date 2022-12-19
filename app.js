@@ -42,7 +42,6 @@ searchIcon.addEventListener("click", () => {
   `;
   document.querySelector(".page-header").append(div);
   div.querySelector(".user-input-search-btn").addEventListener("click", () => {
-    /* document.querySelector(".top-search-screen").remove(); */
     filterFoods();
   });
 });
@@ -59,34 +58,48 @@ function filterFoods() {
   for (let i = 0; i < filterArray.length; i++) {
     if (filterArray[i].checked == true) {
       noFilterTicked = false;
-      currentCategory = categorys[i];
-      let items = orderCards[currentCategory],
-        searchQuery = userInput.value.toLowerCase();
-      if (searchQuery != "") {
-        items = items.filter(
-          (item) =>
-            item.titel.toLowerCase().includes(searchQuery) ||
-            item.info.toLowerCase().includes(searchQuery)
-        );
-      }
-      generateOrderCards(items);
+      setCategoryTitle(i);
+      let items = searchFoods(userInput.value, orderCards[currentCategory]);
+      items.length > 0 && generateOrderCards(items);
     }
   }
   if (noFilterTicked) {
     for (let i = 0; i < categorys.length; i++) {
-      let items = orderCards[categorys[i]],
-        searchQuery = userInput.value.toLowerCase();
-      if (searchQuery != "") {
-        items = items.filter(
-          (item) =>
-            item.titel.toLowerCase().includes(searchQuery) ||
-            item.info.toLowerCase().includes(searchQuery)
-        );
+      let items = searchFoods(userInput.value, orderCards[categorys[i]]);
+      if (items.length > 0) {
+        setCategoryTitle(i);
+        generateOrderCards(items);
       }
-      items.length > 0 && generateOrderCards(items);
     }
   }
   document.querySelector(".top-search-screen").remove();
+  cardContainer.innerHTML == "" && onNoItemsFound();
+}
+
+function searchFoods(searchQuery, list) {
+  let items = list,
+    newSearchQuery = searchQuery.toLowerCase();
+  if (searchQuery != "") {
+    items = items.filter(
+      (item) =>
+        item.titel.toLowerCase().includes(newSearchQuery) ||
+        item.info.toLowerCase().includes(newSearchQuery)
+    );
+  }
+  return items;
+}
+
+function onNoItemsFound() {
+  cardContainer.innerHTML = `
+  <article class="card">
+  <img src="assets/images/icons/scroll.png" class="background-image"/>
+    <h1 style="width: 75%">${
+      currentLanguage == "swedish"
+        ? "Hittade inte det du sökte efter"
+        : "Could not find what you were looking for"
+    }</h1>
+  </article>
+  `;
 }
 
 languageFlag.addEventListener("click", () => {
@@ -205,7 +218,6 @@ const orderCards = {
 };
 
 function generateOrderCards(object) {
-  setCategoryTitle();
   for (let i = 0; i < object.length; i++) {
     const foods = object;
     let card = document.createElement("article");
@@ -226,7 +238,8 @@ function generateOrderCards(object) {
   }
 }
 
-function setCategoryTitle() {
+function setCategoryTitle(index) {
+  currentCategory = categorys[index];
   const titleContainer = document.createElement("div");
   titleContainer.className = "container-category";
   titleContainer.innerHTML = `
@@ -246,8 +259,8 @@ function setCategoryTitle() {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       setTimeout(() => {
-        currentCategory = categorys[i - 1];
         cardContainer.innerHTML = "";
+        setCategoryTitle(i - 1);
         generateOrderCards(orderCards[currentCategory]);
         cardContainer.classList.toggle("fade");
       }, 250);
@@ -255,4 +268,5 @@ function setCategoryTitle() {
   }
 })();
 
+setCategoryTitle(0);
 generateOrderCards(orderCards[currentCategory]);
