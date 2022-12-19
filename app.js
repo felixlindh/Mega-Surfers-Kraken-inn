@@ -34,7 +34,7 @@ searchIcon.addEventListener("click", () => {
         </p>
         <p class="filters-options">
             <input id="beverages" class="filters-checkbox" type="checkbox" />
-            <span>Beverages</span>
+            <span>Drinks</span>
         </p>
     </div>
     <div class="search-screen-user-input">
@@ -43,7 +43,9 @@ searchIcon.addEventListener("click", () => {
         </div>
     </div>
   `;
+  
   document.querySelector(".page-header").append(div);
+  swapLanguageSearch();
   div.querySelector(".user-input-search-btn").addEventListener("click", () => {
     /* document.querySelector(".top-search-screen").remove(); */
     filterFoods();
@@ -80,7 +82,16 @@ languageFlag.addEventListener("click", () => {
   `;
   setLanguageFunctions(languageDiv);
   document.querySelector(".page-header").append(languageDiv);
+  swapSelectLanguageTitle();
 });
+
+function swapSelectLanguageTitle() {
+  const title = document.querySelector(".lang-select-title");
+
+  if ( currentLanguage == "swedish") {
+    title.innerText = "Välj ditt språk";
+  }
+}
 
 function onOrderClick(event) {
   const card = event.currentTarget.parentElement;
@@ -106,17 +117,75 @@ function setLanguageFunctions(container) {
   const flags = container.querySelectorAll(".flag-img");
   flags[0].addEventListener("click", () => {
     setLanguage("swedish");
+    swapLanguageButtons();
+    swapCategoryLanguage()
     container.remove();
+    
   });
   flags[1].addEventListener("click", () => {
     setLanguage("english");
+    swapLanguageButtons();
+    swapCategoryLanguage()
     container.remove();
+    
   });
+  
 }
 
 function setLanguage(language) {
   currentLanguage = language;
   languageFlag.setAttribute("src", `assets/images/icons/${language}-flag.png`);
+}
+
+function swapLanguageSearch() {
+  const headerSearch = document.querySelector(".search-screen-title");
+  const spanContainer = document.querySelector(".search-screen-filters");
+  const spans = spanContainer.querySelectorAll("span");
+  const searchButton = document.querySelector(".user-input-search-btn");
+  
+  if(currentLanguage == "swedish") {
+      headerSearch.innerText = "Sök och filtrera"
+      spans[0].innerText = "Barbeques";
+      spans[1].innerText = "Efterätter";
+      spans[2].innerText = "Smörgåsar";
+      spans[3].innerText = "Drycker";
+      searchButton.innerText = "Sök";
+  } else if (currentLanguage == "english") {
+      headerSearch.innerText = "Search and filter"
+      spans[0].innerText = "Barbeques";
+      spans[1].innerText = "Desserts";
+      spans[2].innerText = "Sandwiches";
+      spans[3].innerText = "Drinks";
+      searchButton.innerText = "Search"
+  }
+}
+function swapLanguageReceit() {
+  const receitHeader = document.querySelector(".heading");
+  const totalCost = document.querySelector(".subtotal");
+  const itemAmount = document.querySelector(".items")
+  if(currentLanguage == "swedish") {
+    receitHeader.innerText = "Dina köp";
+    totalCost.innerText = "Total konstnad";
+    itemAmount.innerText = "Varor: ";
+  } else if (currentLanguage == "english") {
+    receitHeader.innerText = "Your purchases";
+    totalCost.innerText = "Total cost";
+    itemAmount.innerText = "Items: "
+  }
+}
+
+function swapLanguageButtons() {
+  const orderButtons = document.querySelectorAll(".order-button");
+
+  if(currentLanguage == "swedish") {
+    orderButtons.forEach(button => {
+      button.innerText = "Beställ";
+    });
+  } else if (currentLanguage == "english") {
+    orderButtons.forEach(button => {
+      button.innerText = "Order";
+    });
+  }
 }
 
 const orderCards = {
@@ -223,6 +292,8 @@ function generateOrderCards(object) {
     card.append(button);
     cardContainer.append(card);
   }
+  swapLanguageButtons();
+  
 }
 
 function setCategoryTitle() {
@@ -235,7 +306,38 @@ function setCategoryTitle() {
       currentCategory.slice(1, currentCategory.length)
     }</h2>
   `;
+  
   cardContainer.append(titleContainer);
+  swapCategoryLanguage();
+}
+
+function swapCategoryLanguage() {
+  const titles = document.querySelectorAll(".category-title");
+
+  titles.forEach(title => {
+      if (currentLanguage == "swedish") {
+      if(title.innerHTML == "Desserts") {
+        title.innerText = "Efterätter";
+      }
+      if(title.innerHTML == "Sandwiches") {
+        title.innerText = "Smörgåsar";
+      }
+      if(title.innerHTML == "Drinks") {
+        title.innerText = "Drycker";
+      }
+    } else if (currentLanguage == "english") {
+      if(title.innerHTML == "Efterätter") {
+        title.innerText = "Desserts";
+      }
+      if(title.innerHTML == "Smörgåsar") {
+        title.innerText = "Sandwiches";
+      }
+      if(title.innerHTML == "Drycker") {
+        title.innerText = "Drinks";
+      }
+    }
+  });
+  
 }
 
 (() => {
@@ -260,6 +362,7 @@ function showReceit() {
   const receit = document.querySelector(".cart-container");
   topCart.addEventListener("click", () => {
     receit.classList.toggle("show");
+    swapLanguageReceit();
   });
 }
 
