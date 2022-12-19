@@ -7,3 +7,16 @@ function calculateTotalPrice(orderedItems) {
   console.log(Number(priceSum.toFixed(2)));
   return Number(priceSum.toFixed(2));
 }
+
+function searchFoods(searchQuery, list) {
+  let items = list,
+    newSearchQuery = searchQuery.toLowerCase();
+  if (searchQuery != "") {
+    items = items.filter(
+      (item) =>
+        item.titel.toLowerCase().includes(newSearchQuery) ||
+        item.info.toLowerCase().includes(newSearchQuery)
+    );
+  }
+  return items;
+}
