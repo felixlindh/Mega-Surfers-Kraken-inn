@@ -70,6 +70,9 @@ function onOrderClick(event) {
   const check = orderedItems.find((item) => item.title == title);
   if (check != undefined) {
     check.quantity++;
+    console.log(check);
+    document.getElementById(check.title).querySelector(".count").textContent =
+      check.quantity;
   } else {
     const imgUrl = card.querySelector(".food-image").src;
     const price = card.querySelectorAll("p")[1].textContent;
@@ -80,7 +83,56 @@ function onOrderClick(event) {
       price: price,
       quantity: quantity,
     });
+    //Skapar element till kvitto item
+    const receiptItem = document.createElement("article");
+    let itemImg = document.createElement("img");
+    let itemTitle = document.createElement("h1");
+    let itemCount = document.createElement("div");
+    let itemPrice = document.createElement("div");
+    let insidePaper = document.querySelector(".inside-paper");
+
+    //Ger classer till alla kvitto item
+    receiptItem.classList.add("cart-items");
+    receiptItem.id = orderedItems[orderedItems.length - 1].title;
+    itemImg.classList.add("item-img");
+    itemImg.setAttribute("src", orderedItems[orderedItems.length - 1].img);
+    itemTitle.classList.add("title");
+
+    itemCount.classList.add("count");
+    itemPrice.classList.add("price");
+
+    itemTitle.textContent = orderedItems[orderedItems.length - 1].title;
+    itemCount.textContent = orderedItems[orderedItems.length - 1].quantity;
+    itemPrice.textContent = orderedItems[orderedItems.length - 1].price;
+
+    insidePaper.firstChild.before(receiptItem);
+    receiptItem.append(itemImg, itemTitle, itemCount, itemPrice);
   }
+  let amountItem = document.querySelector(".items");
+  let amountPrice = document.querySelector(".total-amount");
+
+  let priceSum = 0;
+
+  for (let i = 0; i < orderedItems.length; i++) {
+    for (let j = 0; j < orderedItems[i].quantity; j++) {
+      let priceText = orderedItems[i].price.slice(
+        0,
+        orderedItems[i].price.length - 3
+      );
+      priceSum += Number(priceText);
+    }
+
+    // priceSum = priceSum + [i];
+  }
+  amountPrice.textContent = priceSum + " Sek";
+  console.log(amountPrice);
+
+  let count = 0;
+  for (let i = 0; i < orderedItems.length; i++) {
+    count += orderedItems[i].quantity;
+  }
+  console.log(count);
+  amountItem.textContent = "Varor: " + count;
   orderAmount.textContent = Number(orderAmount.textContent) + 1;
 }
 
@@ -107,19 +159,19 @@ const orderCards = {
       image: `<img src="${db.bbqs[0].img}" alt="food" />`,
       titel: `<h1>${db.bbqs[0].name}</h1>`,
       info: `<p>${db.bbqs[0].dsc}</p>`,
-      price: `<p>${db.bbqs[0].price}$</p>`,
+      price: `<p>${db.bbqs[0].price}Sek</p>`,
     },
     {
       image: `<img src="${db.bbqs[1].img}" alt="food" />`,
       titel: `<h1>${db.bbqs[1].name}</h1>`,
       info: `<p>${db.bbqs[1].dsc}</p>`,
-      price: `<p>${db.bbqs[1].price}$</p>`,
+      price: `<p>${db.bbqs[1].price}Sek</p>`,
     },
     {
       image: `<img src="${db.bbqs[2].img}" alt="food" />`,
       titel: `<h1>${db.bbqs[2].name}</h1>`,
       info: `<p>${db.bbqs[2].dsc}</p>`,
-      price: `<p>${db.bbqs[2].price}$</p>`,
+      price: `<p>${db.bbqs[2].price}Sek</p>`,
     },
   ],
   sandwiches: [
@@ -127,19 +179,19 @@ const orderCards = {
       image: `<img src="${db.sandwiches[0].img}" alt="food" />`,
       titel: `<h1>${db.sandwiches[0].name}</h1>`,
       info: `<p>${db.sandwiches[0].dsc}</p>`,
-      price: `<p>${db.sandwiches[0].price}$</p>`,
+      price: `<p>${db.sandwiches[0].price}Sek</p>`,
     },
     {
       image: `<img src="${db.sandwiches[1].img}" alt="food" />`,
       titel: `<h1>${db.sandwiches[1].name}</h1>`,
       info: `<p>${db.sandwiches[1].dsc}</p>`,
-      price: `<p>${db.sandwiches[1].price}$</p>`,
+      price: `<p>${db.sandwiches[1].price}Sek</p>`,
     },
     {
       image: `<img src="${db.sandwiches[2].img}" alt="food" />`,
       titel: `<h1>${db.sandwiches[2].name}</h1>`,
       info: `<p>${db.sandwiches[2].dsc}</p>`,
-      price: `<p>${db.sandwiches[2].price}$</p>`,
+      price: `<p>${db.sandwiches[2].price}Sek</p>`,
     },
   ],
   desserts: [
@@ -147,19 +199,19 @@ const orderCards = {
       image: `<img src="${db.desserts[0].img}" alt="food" />`,
       titel: `<h1>${db.desserts[0].name}</h1>`,
       info: `<p>${db.desserts[0].dsc}</p>`,
-      price: `<p>${db.desserts[0].price}$</p>`,
+      price: `<p>${db.desserts[0].price}Sek</p>`,
     },
     {
       image: `<img src="${db.desserts[1].img}" alt="food" />`,
       titel: `<h1>${db.desserts[1].name}</h1>`,
       info: `<p>${db.desserts[1].dsc}</p>`,
-      price: `<p>${db.desserts[1].price}$</p>`,
+      price: `<p>${db.desserts[1].price}Sek</p>`,
     },
     {
       image: `<img src="${db.desserts[2].img}" alt="food" />`,
       titel: `<h1>${db.desserts[2].name}</h1>`,
       info: `<p>${db.desserts[2].dsc}</p>`,
-      price: `<p>${db.desserts[2].price}$</p>`,
+      price: `<p>${db.desserts[2].price}Sek</p>`,
     },
   ],
   drinks: [
@@ -167,19 +219,19 @@ const orderCards = {
       image: `<img src="${db.drinks[0].img}" alt="food" />`,
       titel: `<h1>${db.drinks[0].name}</h1>`,
       info: `<p>${db.drinks[0].dsc}</p>`,
-      price: `<p>${db.drinks[0].price}$</p>`,
+      price: `<p>${db.drinks[0].price}Sek</p>`,
     },
     {
       image: `<img src="${db.drinks[1].img}" alt="food" />`,
       titel: `<h1>${db.drinks[1].name}</h1>`,
       info: `<p>${db.drinks[1].dsc}</p>`,
-      price: `<p>${db.drinks[1].price}$</p>`,
+      price: `<p>${db.drinks[1].price}Sek</p>`,
     },
     {
       image: `<img src="${db.drinks[2].img}" alt="food" />`,
       titel: `<h1>${db.drinks[2].name}</h1>`,
       info: `<p>${db.drinks[2].dsc}</p>`,
-      price: `<p>${db.drinks[2].price}$</p>`,
+      price: `<p>${db.drinks[2].price}Sek</p>`,
     },
   ],
 };
@@ -238,11 +290,15 @@ function setCategoryTitle() {
 
 generateOrderCards(orderCards);
 
-function showReceit() {
+function showReceipt() {
   const receit = document.querySelector(".cart-container");
   topCart.addEventListener("click", () => {
     receit.classList.toggle("show");
   });
 }
+showReceipt();
 
-showReceit();
+// function addToCart(item) {
+//   let button = document.querySelector(".order-button");
+//   let item =
+// }
