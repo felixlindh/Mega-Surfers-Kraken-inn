@@ -121,10 +121,8 @@ function onOrderClick(event) {
       );
       priceSum += Number(priceText);
     }
-
-    // priceSum = priceSum + [i];
   }
-  amountPrice.textContent = priceSum + " Sek";
+  amountPrice.textContent = priceSum.toFixed(2) + " Sek";
   console.log(amountPrice);
 
   let count = 0;
