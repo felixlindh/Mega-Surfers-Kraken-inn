@@ -29,6 +29,10 @@ body {
   align-items: center;
 }
 
+.featured-category{
+  width: 6em;
+}
+
 .container-category > .category-background {
   position: absolute;
   width: 50%;
