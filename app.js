@@ -413,7 +413,7 @@ function generateOrderCards(object) {
     button.addEventListener("click", onOrderClick);
     let backgroundImage = document.createElement("img");
     backgroundImage.className = "background-image";
-    backgroundImage.src = "/assets/Papper_TP.png";
+    backgroundImage.src = "assets/Papper_TP.png";
 
     card.innerHTML =
       foods[i].image + foods[i].titel + foods[i].info + foods[i].price;
