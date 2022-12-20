@@ -4,10 +4,11 @@ const searchIcon = document.querySelector(".top-search");
 const navList = document.querySelector(".nav-list");
 const orderAmount = document.querySelector(".amount-text");
 const topCart = document.querySelector(".top-cart");
+const featuredBtn = document.querySelector(".featured-btn");
 
 let currentLanguage = "swedish";
-let currentCategory = "bbqs";
-const categorys = ["bbqs", "desserts", "sandwiches", "drinks"];
+let currentCategory = "highlights";
+const categorys = ["highlights", "bbqs", "desserts", "sandwiches", "drinks"];
 const orderedItems = [];
 
 searchIcon.addEventListener("click", () => {
@@ -285,6 +286,32 @@ function swapLanguageButtons() {
 }
 
 const orderCards = {
+  highlights: [
+    {
+      image: `<img src="${db.bbqs[0].img}" alt="food" />`,
+      titel: `<h1>${db.bbqs[0].name}</h1>`,
+      info: `<p>${db.bbqs[0].dsc}</p>`,
+      price: `<p>${db.bbqs[0].price}Sek</p>`,
+    },
+    {
+      image: `<img src="${db.sandwiches[1].img}" alt="food" />`,
+      titel: `<h1>${db.sandwiches[1].name}</h1>`,
+      info: `<p>${db.sandwiches[1].dsc}</p>`,
+      price: `<p>${db.sandwiches[1].price}Sek</p>`,
+    },
+    {
+      image: `<img src="${db.desserts[0].img}" alt="food" />`,
+      titel: `<h1>${db.desserts[0].name}</h1>`,
+      info: `<p>${db.desserts[0].dsc}</p>`,
+      price: `<p>${db.desserts[0].price}Sek</p>`,
+    },
+    {
+      image: `<img src="${db.drinks[1].img}" alt="food" />`,
+      titel: `<h1>${db.drinks[1].name}</h1>`,
+      info: `<p>${db.drinks[1].dsc}</p>`,
+      price: `<p>${db.drinks[1].price}Sek</p>`,
+    },
+  ],
   bbqs: [
     {
       image: `<img src="${db.bbqs[0].img}" alt="food" />`,
@@ -417,6 +444,9 @@ function swapCategoryLanguage() {
       if (title.innerHTML == "Sandwiches") {
         title.innerText = "Smörgåsar";
       }
+      if (title.innerHTML == "Highlights") {
+        title.innerText = "Höjdpunkter";
+      }
       if (title.innerHTML == "Drinks") {
         title.innerText = "Drycker";
       }
@@ -427,6 +457,9 @@ function swapCategoryLanguage() {
       if (title.innerHTML == "Smörgåsar") {
         title.innerText = "Sandwiches";
       }
+      if (title.innerHTML == "Höjdpunkter") {
+        title.innerText = "Highlights";
+      }
       if (title.innerHTML == "Drycker") {
         title.innerText = "Drinks";
       }
@@ -435,14 +468,14 @@ function swapCategoryLanguage() {
 }
 
 (() => {
-  for (let i = 1; i < navList.children.length; i++) {
+  for (let i = 0; i < navList.children.length; i++) {
     navList.children[i].addEventListener("click", () => {
       cardContainer.classList.toggle("fade");
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       setTimeout(() => {
         cardContainer.innerHTML = "";
-        setCategoryTitle(i - 1);
+        setCategoryTitle(i);
         generateOrderCards(orderCards[currentCategory]);
         cardContainer.classList.toggle("fade");
       }, 250);
