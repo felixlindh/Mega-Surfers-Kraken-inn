@@ -1,6 +1,6 @@
 :root {
   --blue: #087f8c;
-  --brown: #784F41;
+  --brown: #784f41;
 }
 * {
   padding: 0;
@@ -140,7 +140,6 @@ body {
   background-image: radial-gradient(circle, black 33%, transparent);
   padding: 25%;
   border-radius: 50%;
- 
 }
 
 .cart-amount > .amount-text {
@@ -231,6 +230,7 @@ body {
   height: 2em;
 }
 
+.login-btn,
 .search-screen-user-input > .user-input-search-btn {
   background-color: var(--blue);
   color: white;
@@ -269,4 +269,100 @@ body {
   position: relative;
   width: 100%;
   margin: auto auto;
+}
+
+.login-form {
+  position: relative;
+  width: 100%;
+  margin: 50% auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.login-form * {
+  margin: 0.25em 25%;
+  font-family: "Berkshire Swash", cursive;
+}
+
+.form-title {
+  text-align: center;
+  margin: 0.25em 15%;
+  margin-top: 1.25em;
+}
+
+.form-input {
+  color: var(--blue);
+  border: solid 1px;
+  border-radius: 0.5em;
+  background-color: transparent;
+  padding: 0.5em;
+}
+
+.login-btn {
+  height: 3em;
+  width: 6em;
+}
+
+.login-form .background-image {
+  margin: 0 auto;
+  left: 5%;
+  height: 20em;
+}
+
+.login-form .certificate-img {
+  position: absolute;
+  width: 3.5em;
+  bottom: -1.5em;
+  right: -2em;
+}
+
+.login-form .captain-img {
+  position: absolute;
+  width: 10em;
+  top: -5.5em;
+  z-index: -5;
+  left: 1em;
+  animation-name: captain-jump;
+  animation-duration: 1s;
+}
+
+@keyframes captain-jump {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -5.5em;
+  }
+}
+
+.chat-bubble-container {
+  position: absolute;
+  top: -7.5em;
+  left: -5em;
+  animation-name: chat-bubble-fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes chat-bubble-fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.chat-bubble-container .bubble-img {
+  width: 8em;
+  position: absolute;
+}
+
+.chat-bubble-container .bubble-text {
+  text-align: center;
+  position: absolute;
+  left: 2em;
+  top: 0.33em;
 }
