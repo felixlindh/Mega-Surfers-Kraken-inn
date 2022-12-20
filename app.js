@@ -98,7 +98,7 @@ function onNoItemsFound() {
   cardContainer.innerHTML = `
   <article class="card">
   <img src="assets/images/icons/scroll.png" class="background-image"/>
-    <h1 style="width: 75%">${
+    <h1 id="no-items-found-text" style="width: 75%">${
       currentLanguage == "swedish"
         ? "Hittade inte det du sökte efter"
         : "Could not find what you were looking for"
@@ -216,12 +216,20 @@ function setLanguageFunctions(container) {
     setLanguage("swedish");
     swapLanguageButtons();
     swapCategoryLanguage();
+    let itemsNotFound = document.getElementById("no-items-found-text");
+    if (itemsNotFound != null) {
+      itemsNotFound.textContent = "Hittade inte det du sökte efter";
+    }
     container.remove();
   });
   flags[1].addEventListener("click", () => {
     setLanguage("english");
     swapLanguageButtons();
     swapCategoryLanguage();
+    let itemsNotFound = document.getElementById("no-items-found-text");
+    if (itemsNotFound != null) {
+      itemsNotFound.textContent = "Could not find what you were looking for";
+    }
     container.remove();
   });
 }
