@@ -64,13 +64,13 @@ function filterFoods() {
   for (let i = 0; i < filterArray.length; i++) {
     if (filterArray[i].checked == true) {
       noFilterTicked = false;
-      setCategoryTitle(i);
+      setCategoryTitle(i + 1);
       let items = searchFoods(userInput.value, orderCards[currentCategory]);
       items.length > 0 && generateOrderCards(items);
     }
   }
   if (noFilterTicked) {
-    for (let i = 0; i < categorys.length; i++) {
+    for (let i = 1; i < categorys.length; i++) {
       let items = searchFoods(userInput.value, orderCards[categorys[i]]);
       if (items.length > 0) {
         setCategoryTitle(i);
