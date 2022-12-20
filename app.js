@@ -394,9 +394,12 @@ function generateOrderCards(object) {
     card.append(backgroundImage);
     card.append(button);
     cardContainer.append(card);
-  }
+    cardContainer.classList.add("slide-container");
+    setTimeout(() => {
+      cardContainer.classList.remove("slide-container");
+    },1000)
   swapLanguageButtons();
-}
+}}
 
 function setCategoryTitle(index) {
   currentCategory = categorys[index];
@@ -445,13 +448,14 @@ function swapCategoryLanguage() {
 (() => {
   for (let i = 1; i < navList.children.length; i++) {
     navList.children[i].addEventListener("click", () => {
-      cardContainer.classList.toggle("fade");
+       cardContainer.classList.toggle("fade");
       document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
+      document.documentElement.scrollTop = 0; 
       setTimeout(() => {
         cardContainer.innerHTML = "";
         setCategoryTitle(i - 1);
         generateOrderCards(orderCards[currentCategory]);
+        // cardContainer.classList.toggle("slide-container");
         cardContainer.classList.toggle("fade");
       }, 250);
     });
