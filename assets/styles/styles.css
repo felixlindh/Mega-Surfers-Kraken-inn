@@ -1,0 +1,470 @@
+:root {
+  --blue: #087f8c;
+  --brown: #784f41;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-image: url("../wood-background.jpg");
+  font-family: "Berkshire Swash", cursive;
+  color: var(--blue);
+}
+
+.container-category {
+  position: relative;
+  height: 3em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featured-category{
+  width: 6em;
+}
+
+.container-category > .category-background {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  z-index: -5;
+}
+
+.container-category > .category-title {
+  text-align: center;
+  max-width: 80%;
+}
+
+.fade {
+  opacity: 0;
+  z-index: -50;
+}
+
+.card-container {
+  transition: 0.25s opacity;
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 10em;
+  padding-bottom: 10em;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 25em;
+  text-align: center;
+}
+
+.card > p {
+  max-width: 80%;
+}
+
+.background-image {
+  position: absolute;
+  z-index: -1;
+  width: 90%;
+}
+
+.food-image {
+  height: 10em;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px black;
+}
+.food-name {
+  color: var(--blue);
+}
+
+.food-info {
+  color: #087f8c;
+}
+
+.order-button {
+  border-radius: 10px;
+  border-style: none;
+  background-color: #087f8c;
+  color: white;
+  font-weight: bold;
+  padding: 1em 2em;
+  box-shadow: 1px 1px 10px black;
+  font-family: "Berkshire Swash", cursive;
+}
+
+/* Header classes */
+.page-header {
+  width: 100%;
+  /* background-color: var(--brown); */
+}
+
+.header-top {
+  width: 95%;
+  margin: 0.5em auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top > .top-title {
+  flex: 0 0 25%;
+  text-align: center;
+  text-shadow: 0 0 15px black;
+}
+
+.header-top > .top-cart,
+.header-top > .top-flag,
+.header-top > .top-search {
+  flex: 0 0 20%;
+  width: 20%;
+}
+
+.top-cart {
+  position: relative;
+  z-index: 15;
+}
+
+.top-cart > .cart-img {
+  width: 100%;
+}
+
+.top-cart > .cart-amount {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background-image: radial-gradient(circle, black 33%, transparent);
+  padding: 25%;
+  border-radius: 50%;
+}
+
+.cart-amount > .amount-text {
+  color: white;
+}
+
+.header-lang-select {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.745);
+  width: 100vw;
+  padding: 100% 0;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-lang-select > .lang-select-background {
+  width: 100%;
+  position: absolute;
+  z-index: -5;
+}
+
+.header-lang-select > .lang-select-title {
+  color: var(--blue);
+}
+
+.lang-select-flags {
+  display: flex;
+  justify-content: space-around;
+}
+
+.lang-select-flags > .flag-img {
+  width: 33%;
+  box-shadow: 0 0 15px black;
+}
+
+.top-search-screen {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.745);
+  width: 100vw;
+  padding: 20vh 0 65vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 1.5em;
+}
+
+.top-search-screen > .search-screen-background {
+  width: 100%;
+  position: absolute;
+  top: 14vh;
+  z-index: -5;
+}
+
+.top-search-screen > .search-screen-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1em;
+}
+
+.search-screen-filters > .filters-options {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: center;
+}
+
+.filters-options > .filters-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.filters-options > span {
+  margin-left: 0.5em;
+}
+
+.search-screen-user-input > * {
+  font-family: "Berkshire Swash", cursive;
+  height: 2em;
+}
+
+.login-btn,
+.search-screen-user-input > .user-input-search-btn {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  width: 4em;
+}
+
+/* nav bar  */
+.header-nav {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: var(--brown);
+  padding: 0.3em;
+  z-index: 20;
+  box-shadow: 1px 1px 20px black;
+}
+
+.nav-list {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-list > .list-btn {
+  width: 18%;
+  background: none;
+  background-image: url("../images/icons/scroll.png");
+  background-size: 100% 100%;
+  border: none;
+  background-repeat: no-repeat;
+  /* background-position: 0 10px; */
+}
+
+.list-btn > .btn-img {
+  position: relative;
+  width: 100%;
+  margin: auto auto;
+}
+
+.slide-container {
+  transition: 1s;
+  animation: slideIn 0.9s ease-in;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: skewX(53deg) translateX(-500px);
+  }
+  60% {
+    transform: translateX(0px);
+  }
+  62% {
+    transform: skewX(0deg) translateX(30px);
+  }
+  70% {
+    transform: skew(-20deg);
+  }
+  80% {
+    transform: skew(0deg) translate(0);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+.login-form {
+  position: relative;
+  width: 100%;
+  margin: 50% auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.login-form * {
+  margin: 0.25em 25%;
+  font-family: "Berkshire Swash", cursive;
+}
+
+.form-title {
+  text-align: center;
+  margin: 0.25em 15%;
+  margin-top: 1.25em;
+}
+
+.form-input {
+  color: var(--blue);
+  border: solid 1px;
+  border-radius: 0.5em;
+  background-color: transparent;
+  padding: 0.5em;
+}
+
+.login-btn {
+  height: 3em;
+  width: 6em;
+}
+
+.login-form .background-image {
+  margin: 0 auto;
+  left: 5%;
+  height: 20em;
+}
+
+.login-form .certificate-img {
+  position: absolute;
+  width: 3.5em;
+  bottom: -1.5em;
+  right: -2em;
+}
+
+.login-form .captain-img {
+  position: absolute;
+  width: 10em;
+  top: -5.5em;
+  z-index: -5;
+  left: 1em;
+  animation-name: captain-jump;
+  animation-duration: 1s;
+}
+
+@keyframes captain-jump {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -5.5em;
+  }
+}
+
+.chat-bubble-container {
+  position: absolute;
+  top: -7.5em;
+  left: -5em;
+  animation-name: chat-bubble-fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes chat-bubble-fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.chat-bubble-container .bubble-img {
+  width: 8em;
+  position: absolute;
+}
+
+.chat-bubble-container .bubble-text {
+  text-align: center;
+  position: absolute;
+  left: 2em;
+  top: 0.33em;
+}
+
+.jack-sparrow-img{
+  margin-left: 35%;
+  position: absolute;
+  width: 30%;
+  z-index: -5;
+}
+
+.jack-container{
+  margin-bottom: -3em;
+}
+
+.pistol1,
+.pistol2{
+  position: absolute;
+  margin-top: .6em;
+  width: 35%;
+  z-index: -5;
+ 
+}
+
+.pistol1{
+  margin-left: 3em;
+  transform: scaleX(-1) rotate(320deg);
+}
+
+.pistol2{
+  right: 0;
+  margin-right: 4em;
+  width: 35%;
+  transform: rotate(320deg);
+  z-index: -6;
+  
+}
+
+.admin-page-container {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.admin-page-container * {
+  text-align: center;
+  flex: 0 0 50%;
+}
+
+.admin-card {
+  border: solid 2px black;
+  border-radius: 0.5em;
+  margin: 0.5em auto;
+  padding: 1em;
+}
+
+.admin-card button {
+  padding: 1em;
+  margin: 0.5em auto;
+  color: var(--blue);
+}
+
+.admin-card p {
+  font-size: 1rem;
+}
+
+.admin-card h1 {
+  font-size: 1.2rem;
+}
+
+.set-highlight-btn {
+  padding: 1em;
+}
