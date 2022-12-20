@@ -433,3 +433,38 @@ body {
   
 }
 
+.admin-page-container {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.admin-page-container * {
+  text-align: center;
+  flex: 0 0 50%;
+}
+
+.admin-card {
+  border: solid 2px black;
+  border-radius: 0.5em;
+  margin: 0.5em auto;
+  padding: 1em;
+}
+
+.admin-card button {
+  padding: 1em;
+  margin: 0.5em auto;
+  color: var(--blue);
+}
+
+.admin-card p {
+  font-size: 1rem;
+}
+
+.admin-card h1 {
+  font-size: 1.2rem;
+}
+
+.set-highlight-btn {
+  padding: 1em;
+}
