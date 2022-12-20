@@ -398,3 +398,38 @@ body {
   left: 2em;
   top: 0.33em;
 }
+
+.jack-sparrow-img{
+  margin-left: 35%;
+  position: absolute;
+  width: 30%;
+  z-index: -5;
+}
+
+.jack-container{
+  margin-bottom: -3em;
+}
+
+.pistol1,
+.pistol2{
+  position: absolute;
+  margin-top: .6em;
+  width: 35%;
+  z-index: -5;
+ 
+}
+
+.pistol1{
+  margin-left: 3em;
+  transform: scaleX(-1) rotate(320deg);
+}
+
+.pistol2{
+  right: 0;
+  margin-right: 4em;
+  width: 35%;
+  transform: rotate(320deg);
+  z-index: -6;
+  
+}
+

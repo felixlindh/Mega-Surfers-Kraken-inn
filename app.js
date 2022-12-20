@@ -424,9 +424,25 @@ function generateOrderCards(object) {
     cardContainer.classList.add("slide-container");
     setTimeout(() => {
       cardContainer.classList.remove("slide-container");
-    },1000)
-  swapLanguageButtons();
-}}
+    }, 1000);
+    swapLanguageButtons();
+  }
+  if (currentCategory == "highlights") {
+    createCaptainJack();
+  }
+}
+
+function createCaptainJack() {
+  const jackContainer = document.createElement("div");
+  jackContainer.classList.add("jack-container");
+  jackContainer.innerHTML = `<img class="pistol1" src="assets/images/icons/pistol.png" alt="" />
+  <img
+    class="jack-sparrow-img"
+    src="assets/images/icons/captain.png"
+    alt="" />
+  <img class="pistol2" src="assets/images/icons/pistol.png" alt="" />`;
+  cardContainer.childNodes[0].before(jackContainer);
+}
 
 function setCategoryTitle(index) {
   currentCategory = categorys[index];
@@ -481,9 +497,9 @@ function swapCategoryLanguage() {
 (() => {
   for (let i = 0; i < navList.children.length; i++) {
     navList.children[i].addEventListener("click", () => {
-       cardContainer.classList.toggle("fade");
+      cardContainer.classList.toggle("fade");
       document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0; 
+      document.documentElement.scrollTop = 0;
       setTimeout(() => {
         cardContainer.innerHTML = "";
         setCategoryTitle(i);
