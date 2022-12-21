@@ -413,12 +413,15 @@ function generateOrderCards(object) {
     button.addEventListener("click", onOrderClick);
     let backgroundImage = document.createElement("img");
     backgroundImage.className = "background-image";
-    backgroundImage.src = "/assets/Papper_TP.png";
-
+    backgroundImage.src = "assets/Papper_TP.png";
+    let infoContainer = document.createElement("div");
+    infoContainer.className = "info-container";
     card.innerHTML =
-      foods[i].image + foods[i].titel + foods[i].info + foods[i].price;
+      foods[i].image;
+      infoContainer.innerHTML = foods[i].titel + foods[i].info + foods[i].price;
     card.querySelector("img").className = "food-image";
     card.append(backgroundImage);
+    card.append(infoContainer);
     card.append(button);
     cardContainer.append(card);
     cardContainer.classList.add("slide-container");

@@ -55,8 +55,8 @@ body {
   margin-top: 3em;
   display: flex;
   flex-direction: column;
-  gap: 10em;
-  padding-bottom: 10em;
+  gap: 5em;
+  padding-bottom: 7em;
 }
 
 .card {
@@ -66,6 +66,7 @@ body {
   justify-content: space-around;
   height: 25em;
   text-align: center;
+  position: relative;
 }
 
 .card > p {
@@ -79,18 +80,38 @@ body {
 }
 
 .food-image {
-  height: 10em;
+  height: 20em;
   width: 80%;
   border-radius: 10px;
   box-shadow: 1px 1px 10px black;
 }
-.food-name {
+.info-container {
+  position: absolute;
+  color: white;
+  width: 20em;
+  top: 1em;
+  font-weight: 900;
+  text-align: left;
+  text-shadow: 0 0 10px black;
+  margin-left: 1em;
+}
+
+.info-container > h1 {
+  width: 10em;
+}
+
+.info-container > p:last-child {
+  position: absolute;
+  right: 1em;
+  top: 0;
+}
+/* .food-name {
   color: var(--blue);
 }
 
 .food-info {
   color: #087f8c;
-}
+} */
 
 .order-button {
   border-radius: 10px;
@@ -251,7 +272,7 @@ body {
   width: 100%;
   bottom: 0;
   background-color: var(--brown);
-  padding: 0.3em;
+  padding-top: 1em;
   z-index: 20;
   box-shadow: 1px 1px 20px black;
 }
@@ -278,6 +299,21 @@ body {
   margin: auto auto;
 }
 
+.list-btn {
+  position: relative;
+}
+
+.list-btn > p {
+  margin: 0 auto;
+  position: absolute;
+  top: -1.2em;
+  
+  left: 0;
+  right: 0;
+  font-family: "Berkshire Swash", cursive;
+  color: white;
+}
+
 .slide-container {
   transition: 1s;
   animation: slideIn 0.9s ease-in;
@@ -293,9 +329,9 @@ body {
   62% {
     transform: skewX(0deg) translateX(30px);
   }
-  70% {
+  /* 70% {
     transform: skew(-20deg);
-  }
+  } */
   80% {
     transform: skew(0deg) translate(0);
   }
@@ -407,7 +443,7 @@ body {
 }
 
 .jack-container{
-  margin-bottom: -3em;
+   margin-bottom: 2em; 
 }
 
 .pistol1,
