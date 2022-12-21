@@ -29,7 +29,7 @@ body {
   align-items: center;
 }
 
-.featured-category{
+.featured-category {
   width: 6em;
 }
 
@@ -257,6 +257,7 @@ body {
   height: 2em;
 }
 
+.confirm-btn,
 .login-btn,
 .search-screen-user-input > .user-input-search-btn {
   background-color: var(--blue);
@@ -307,7 +308,7 @@ body {
   margin: 0 auto;
   position: absolute;
   top: -1.2em;
-  
+
   left: 0;
   right: 0;
   font-family: "Berkshire Swash", cursive;
@@ -435,38 +436,36 @@ body {
   top: 0.33em;
 }
 
-.jack-sparrow-img{
+.jack-sparrow-img {
   margin-left: 35%;
   position: absolute;
   width: 30%;
   z-index: -5;
 }
 
-.jack-container{
-   margin-bottom: 2em; 
+.jack-container {
+  margin-bottom: 2em;
 }
 
 .pistol1,
-.pistol2{
+.pistol2 {
   position: absolute;
-  margin-top: .6em;
+  margin-top: 0.6em;
   width: 35%;
   z-index: -5;
- 
 }
 
-.pistol1{
+.pistol1 {
   margin-left: 3em;
   transform: scaleX(-1) rotate(320deg);
 }
 
-.pistol2{
+.pistol2 {
   right: 0;
   margin-right: 4em;
   width: 35%;
   transform: rotate(320deg);
   z-index: -6;
-  
 }
 
 .admin-page-container {
@@ -503,4 +502,39 @@ body {
 
 .set-highlight-btn {
   padding: 1em;
+}
+
+.confirm-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 23.5em;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 22em 5em;
+}
+
+.confirm-page .confirm-title {
+  text-align: center;
+  margin: 0.5em auto;
+}
+
+.confirm-page .confirm-btn {
+  margin-top: 2em;
+  padding: 1.5em;
+}
+
+.confirm-page *:last-child {
+  margin-left: 6.5em;
+}
+
+.confirm-background {
+  position: absolute;
+  z-index: -5;
+  width: 85%;
+  top: 38%;
+  left: 8%;
+}
+
+.confirm-food {
+  text-align: center;
 }
