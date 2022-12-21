@@ -134,11 +134,45 @@ function swapSelectLanguageTitle() {
 
 function onOrderClick(event) {
   const card = event.currentTarget.parentElement;
+  const confirmPage = document.createElement("div");
+  confirmPage.className = "confirm-page";
+  confirmPage.innerHTML = `
+  <img class="confirm-background" src="assets/images/icons/scroll.png"/>
+  <h2 class="confirm-title">${
+    currentLanguage == "swedish" ? "Är du säker?" : "Are you sure?"
+  }</h2>
+  <p class="confirm-food">
+  ${
+    currentLanguage == "swedish"
+      ? "Vill du beställa:"
+      : "Do you want to order: "
+  }</p>
+  <p class="confirm-food">
+  ${card.querySelector("h1").textContent}?
+  </p>
+  <button class="confirm-btn">${
+    currentLanguage == "swedish" ? "Ja" : "Yes"
+  }</button>
+  <button class="confirm-btn">${
+    currentLanguage == "swedish" ? "Nej" : "No"
+  }</button>
+  `;
+  const buttons = confirmPage.querySelectorAll("button");
+  buttons[0].addEventListener("click", () => {
+    addOrderToTab(card);
+    confirmPage.remove();
+  });
+  buttons[1].addEventListener("click", () => {
+    confirmPage.remove();
+  });
+  cardContainer.append(confirmPage);
+}
+
+function addOrderToTab(card) {
   const title = card.querySelector("h1").textContent;
   const check = orderedItems.find((item) => item.title == title);
   if (check != undefined) {
     check.quantity++;
-    console.log(check);
     document.getElementById(check.title).querySelector(".count").textContent =
       check.quantity;
   } else {
