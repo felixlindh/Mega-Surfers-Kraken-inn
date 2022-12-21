@@ -206,7 +206,6 @@ function setTotalItemAmount(orderedItems, amountItem) {
   for (let i = 0; i < orderedItems.length; i++) {
     count += orderedItems[i].quantity;
   }
-  console.log(count);
 
   amountItem.textContent = `${count}`;
 }
@@ -267,11 +266,11 @@ function swapLanguageReceit() {
   const totalCost = document.querySelector(".subtotal");
   const itemAmount = document.querySelector(".items");
   if (currentLanguage == "swedish") {
-    receitHeader.innerText = "Dina köp";
+    receitHeader.innerText = "Din nota";
     totalCost.innerText = "Total konstnad";
     itemAmount.innerHTML = 'Varor: <span class="item-amount"> </span>';
   } else if (currentLanguage == "english") {
-    receitHeader.innerText = "Your purchases";
+    receitHeader.innerText = "Your tab";
     totalCost.innerText = "Total cost";
     itemAmount.innerHTML = 'Items: <span class="item-amount"> </span>';
   }
@@ -416,9 +415,8 @@ function generateOrderCards(object) {
     backgroundImage.src = "assets/Papper_TP.png";
     let infoContainer = document.createElement("div");
     infoContainer.className = "info-container";
-    card.innerHTML =
-      foods[i].image;
-      infoContainer.innerHTML = foods[i].titel + foods[i].info + foods[i].price;
+    card.innerHTML = foods[i].image;
+    infoContainer.innerHTML = foods[i].titel + foods[i].info + foods[i].price;
     card.querySelector("img").className = "food-image";
     card.append(backgroundImage);
     card.append(infoContainer);
@@ -507,7 +505,6 @@ function swapCategoryLanguage() {
         cardContainer.innerHTML = "";
         setCategoryTitle(i);
         generateOrderCards(orderCards[currentCategory]);
-        // cardContainer.classList.toggle("slide-container");
         cardContainer.classList.toggle("fade");
       }, 250);
     });
@@ -516,11 +513,20 @@ function swapCategoryLanguage() {
 
 function showReceipt() {
   const receit = document.querySelector(".cart-container");
+
   topCart.addEventListener("click", () => {
     swapLanguageReceit();
-    receit.classList.toggle("show");
+    cardContainer.addEventListener("click", () => {
+      receit.classList.remove("show");
+    });
+    if (receit.classList.contains("show")) {
+      receit.classList.remove("show");
+    } else {
+      receit.classList.add("show");
+    }
   });
 }
+
 showReceipt();
 
 setCategoryTitle(0);
