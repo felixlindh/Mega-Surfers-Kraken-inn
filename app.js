@@ -206,7 +206,6 @@ function setTotalItemAmount(orderedItems, amountItem) {
   for (let i = 0; i < orderedItems.length; i++) {
     count += orderedItems[i].quantity;
   }
-  console.log(count);
 
   amountItem.textContent = `${count}`;
 }
@@ -267,11 +266,11 @@ function swapLanguageReceit() {
   const totalCost = document.querySelector(".subtotal");
   const itemAmount = document.querySelector(".items");
   if (currentLanguage == "swedish") {
-    receitHeader.innerText = "Dina köp";
+    receitHeader.innerText = "Din nota";
     totalCost.innerText = "Total konstnad";
     itemAmount.innerHTML = 'Varor: <span class="item-amount"> </span>';
   } else if (currentLanguage == "english") {
-    receitHeader.innerText = "Your purchases";
+    receitHeader.innerText = "Your tab";
     totalCost.innerText = "Total cost";
     itemAmount.innerHTML = 'Items: <span class="item-amount"> </span>';
   }
@@ -513,11 +512,28 @@ function swapCategoryLanguage() {
 
 function showReceipt() {
   const receit = document.querySelector(".cart-container");
+
   topCart.addEventListener("click", () => {
     swapLanguageReceit();
-    receit.classList.toggle("show");
+
+    if (receit.classList.contains("show")) {
+      cardContainer.addEventListener("click", () => {
+        receit.classList.remove("show");
+      });
+      receit.classList.remove("show");
+    } else {
+      receit.classList.add("show");
+    }
   });
 }
+
+function exitTabOnChest(receit) {
+  topCart.addEventListener("click", () => {
+    receit.classList.remove("show");
+  });
+  showReceipt();
+}
+
 showReceipt();
 
 setCategoryTitle(0);
