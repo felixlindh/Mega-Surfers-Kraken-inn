@@ -521,6 +521,7 @@ body {
 .confirm-page .confirm-btn {
   margin-top: 2em;
   padding: 1.5em;
+  font-family: "Berkshire Swash", cursive;
 }
 
 .confirm-page *:last-child {
