@@ -15,8 +15,8 @@
   z-index: 10;
   padding-top: 12vh;
   width: 100%;
-  transform: ;
 }
+
 
 .black-background{
   position: fixed;
@@ -43,10 +43,22 @@
   align-items: center;
 }
 
+.tab-heading{
+ display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+ 
+}
+
 .heading {
-  font-size: 1.4rem;
-  margin-left: 2.5em;
+  font-size: 1.3rem;
   margin-top: 2em;
+}
+
+.balance{
+  font-size: 1.3rem;
+  margin-top: 2em;
+ 
 }
 
 
