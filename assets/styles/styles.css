@@ -539,3 +539,14 @@ body {
 .confirm-food {
   text-align: center;
 }
+
+.confirm-page .cash-btn {
+  width: 7em;
+  height: 4em;
+  padding: 0.5em;
+  margin: 0;
+}
+
+.confirm-page .cash-btn:last-child {
+  margin-left: 1em;
+}

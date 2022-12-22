@@ -8,6 +8,7 @@ const featuredBtn = document.querySelector(".featured-btn");
 
 let currentLanguage = "swedish";
 let currentCategory = "highlights";
+let balance = 500;
 const categorys = ["highlights", "bbqs", "desserts", "sandwiches", "drinks"];
 const orderedItems = [];
 
@@ -132,8 +133,42 @@ function swapSelectLanguageTitle() {
   }
 }
 
+function setNotEnoughCashStrangerScreen() {
+  const div = document.createElement("div");
+  div.className = "confirm-page";
+  div.innerHTML = `
+  <img class="confirm-background" src="assets/images/icons/scroll.png"/>
+  <h2 class="confirm-title">${
+    currentLanguage == "swedish"
+      ? "Ditt saldo räcker inte...landkrabba..."
+      : "You don't have enough money...stranger..."
+  }</h1>
+  <button class="confirm-btn cash-btn" onclick="onFillBalanceClick()">${
+    currentLanguage == "swedish" ? "Fyll på saldo" : "Fill balance"
+  }</button>
+  <button class="confirm-btn cash-btn" onclick="closeNotEnoughCashScreen()">${
+    currentLanguage == "swedish" ? "Stäng" : "Close"
+  }</button>
+  `;
+  cardContainer.append(div);
+}
+
+function onFillBalanceClick() {
+  balance += 500;
+  updateBalance();
+  closeNotEnoughCashScreen();
+}
+
+function closeNotEnoughCashScreen() {
+  document.querySelector(".confirm-page").remove();
+}
+
 function onOrderClick(event) {
   const card = event.currentTarget.parentElement;
+  if (balance - calculateBalance(card) < 0) {
+    setNotEnoughCashStrangerScreen();
+    return;
+  }
   const confirmPage = document.createElement("div");
   confirmPage.className = "confirm-page";
   confirmPage.innerHTML = `
@@ -211,13 +246,21 @@ function addOrderToTab(card) {
     receiptItem.append(itemImg, itemTitle, itemCount, itemPrice);
   }
   let amountItem = document.querySelector(".item-amount");
-  console.log(amountItem);
   let amountPrice = document.querySelector(".total-amount");
   amountPrice.textContent =
     calculateTotalPrice(orderedItems).toFixed(2) + " Sek";
 
   setTotalItemAmount(orderedItems, amountItem);
   orderAmount.textContent = Number(orderAmount.textContent) + 1;
+  balance -= calculateBalance(card);
+  balance = Number(balance.toFixed(2));
+  updateBalance();
+}
+
+function calculateBalance(card) {
+  const p = card.querySelectorAll("p");
+  const price = Number(p[1].textContent.replace("Sek", ""));
+  return price;
 }
 
 function calculateTotalPrice(orderedItems) {
@@ -310,14 +353,23 @@ function swapLanguageReceit() {
   const receitHeader = document.querySelector(".heading");
   const totalCost = document.querySelector(".subtotal");
   const itemAmount = document.querySelector(".items");
+  const balanceElement = document.querySelector(".balance");
   if (currentLanguage == "swedish") {
     receitHeader.innerText = "Din nota";
     totalCost.innerText = "Total konstnad";
     itemAmount.innerHTML = 'Varor: <span class="item-amount"> </span>';
+    balanceElement.innerHTML = balanceElement.innerHTML.replace(
+      "Balance",
+      "Saldo"
+    );
   } else if (currentLanguage == "english") {
     receitHeader.innerText = "Your tab";
     totalCost.innerText = "Total cost";
     itemAmount.innerHTML = 'Items: <span class="item-amount"> </span>';
+    balanceElement.innerHTML = balanceElement.innerHTML.replace(
+      "Saldo",
+      "Balance"
+    );
   }
   let amountItem = document.querySelector(".item-amount");
   setTotalItemAmount(orderedItems, amountItem);
@@ -568,8 +620,16 @@ function showReceipt() {
       receit.classList.remove("show");
     } else {
       receit.classList.add("show");
+      updateBalance();
     }
   });
+}
+
+function updateBalance() {
+  const balanceElement = document
+    .querySelector(".balance")
+    .querySelector("span");
+  balanceElement.textContent = ` ${balance} Sek`;
 }
 
 showReceipt();
