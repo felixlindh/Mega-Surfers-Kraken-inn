@@ -141,7 +141,7 @@ function setNotEnoughCashStrangerScreen() {
   <h2 class="confirm-title">${
     currentLanguage == "swedish"
       ? "Ditt saldo räcker inte...landkrabba..."
-      : "You don't have enough money...stranger..."
+      : "You don't have enough gold...stranger..."
   }</h1>
   <button class="confirm-btn cash-btn" onclick="onFillBalanceClick()">${
     currentLanguage == "swedish" ? "Fyll på saldo" : "Fill balance"
